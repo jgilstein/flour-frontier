@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Jake — Flour Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-feature-settings:'cv02','cv03','cv04','cv11';line-height:1.6;-webkit-font-smoothing:antialiased}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.nav-brand{font-weight:800;font-size:15px;letter-spacing:-0.01em;color:#fff;text-decoration:none}
+.nav-brand span{color:#c8102e}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:#9ca3af;text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-links a.active{color:#fff;background:rgba(200,16,46,0.15)}
+.hero{padding:80px 32px 40px;max-width:1280px;margin:0 auto;text-align:left}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c8102e;padding:6px 14px;border:1px solid rgba(200,16,46,0.3);border-radius:20px;margin-bottom:24px}
+.display{font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:32px}
+.bio{max-width:780px;font-size:18px;line-height:1.7;color:#cbd5e1}
+.bio p{margin-bottom:18px}
+.bio p:last-child{margin-bottom:0}
+.contact{max-width:1280px;margin:60px auto 80px;padding:0 32px}
+.contact-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;margin-bottom:24px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.contact-card{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:#fff;transition:all 0.15s}
+.contact-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.contact-card .label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;margin-bottom:4px}
+.contact-card .value{font-size:15px;font-weight:600;color:#fff;word-break:break-word}
+.footer{border-top:1px solid rgba(255,255,255,0.08);padding:40px 32px;max-width:1280px;margin:0 auto;font-size:12px;color:#6b7280}
+.footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Flour<span>Frontier</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="case-study.html">Case Study</a>
+      <a href="deck.html">Deck</a>      <a href="national.html">National Map</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="eyebrow">Who I Am</div>
+  <h1 class="display">About Jake</h1>
+  <div class="bio">
+    <p>I am Jake Gilstein, a North America Foodservice Sales Intern at General Mills in the Summer 2026 cohort. I am a senior at the University of South Florida graduating December 2026 with a B.S. in Business Management and a Minor in Marketing. Born in Brooklyn, NY. Raised in Philadelphia, PA. Now splitting time between St. Augustine, FL and Tampa, FL.</p>
+    <p>My background blends two angles that turned out to be directly useful at General Mills. I spent the last 8 to 9 months at Scotlynn as a Logistics Account Manager Associate, brokering freight partnerships for major CPG clients, which gave me a working knowledge of how product physically gets from a plant to a customer. The summer before that I was a Strategic Sales Intern at The H.T. Hackney Co. in Tampa, doing 60 store visits per week analyzing buyer behavior and refining route-to-market strategy. The 3PL logistics work and the strategic CPG sales work both showed up directly in the Flour Frontier analysis.</p>
+  </div>
+</section>
+<section class="contact">
+  <div class="contact-eyebrow">Get In Touch</div>
+  <div class="contact-grid">
+    <a href="mailto:jmgilstein@gmail.com" class="contact-card">
+      <div class="label">Email</div>
+      <div class="value">jmgilstein@gmail.com</div>
+    </a>
+    <a href="tel:+12678978687" class="contact-card">
+      <div class="label">Phone</div>
+      <div class="value">(267) 897-8687</div>
+    </a>
+    <a href="https://www.linkedin.com/in/jakegilstein/" target="_blank" rel="noopener" class="contact-card">
+      <div class="label">LinkedIn</div>
+      <div class="value">linkedin.com/in/jakegilstein</div>
+    </a>
+  </div>
+</section>
+<footer class="footer">
+  <div class="row">
+    <div>© 2026 Jake Gilstein · Built during NAF FSI Sales Internship at General Mills</div>
+    <div>St. Augustine, FL · Tampa, FL · Minneapolis WHQ</div>
+  </div>
+</footer>
+</body>
+</html>

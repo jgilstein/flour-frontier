@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Map — Flour Frontier</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,sans-serif;height:100%;overflow:hidden}
+.nav{position:sticky;top:0;z-index:1000;background:rgba(10,14,19,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.nav-brand{font-weight:800;font-size:14px;color:#fff;text-decoration:none}
+.nav-brand span{color:#c8102e}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.nav-links a{color:#9ca3af;text-decoration:none;font-size:12px;font-weight:500;padding:6px 12px;border-radius:6px}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-links a.active{color:#fff;background:rgba(200,16,46,0.15)}
+.insight-bar{background:linear-gradient(90deg,rgba(200,16,46,0.12),rgba(22,163,74,0.12));border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 24px;font-size:12px;color:#cbd5e1;text-align:center}
+.insight-bar strong{color:#fff}
+.insight-bar .pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin:0 4px}
+.insight-bar .good{background:rgba(22,163,74,0.25);color:#86efac}
+.insight-bar .bad{background:rgba(200,16,46,0.25);color:#fca5a5}
+#map{flex:1;min-height:520px;width:100%}
+.layout{display:flex;flex-direction:column;height:100vh}
+.legend{background:rgba(10,14,19,0.94);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:12px 14px;border-radius:8px;color:#fff;font-size:11px;line-height:1.6;box-shadow:0 4px 16px rgba(0,0,0,0.6);max-width:200px}
+.legend strong{font-size:11px;color:#fff;display:block;margin-bottom:6px;margin-top:8px;letter-spacing:0.05em;text-transform:uppercase;color:#9ca3af}
+.legend strong:first-child{margin-top:0}
+.legend .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle;border:1px solid rgba(255,255,255,0.3)}
+.legend .rank-badge{display:inline-block;width:22px;height:22px;border-radius:50%;color:#fff;text-align:center;line-height:22px;font-size:10px;font-weight:700;margin-right:6px;border:1px solid rgba(255,255,255,0.3)}
+.legend .square{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:middle;background:#1a2332;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.4)}
+.legend .diamond{display:inline-block;width:10px;height:10px;transform:rotate(45deg);margin-right:7px;margin-left:1px;vertical-align:middle;background:#1a2332;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.4)}
+/* Popup hard styling for readability */
+.leaflet-popup-content-wrapper{background:#0f1419 !important;color:#fff !important;border-radius:10px !important;border-top:3px solid #c8102e !important;box-shadow:0 8px 32px rgba(0,0,0,0.7) !important;padding:0 !important;max-height:480px;overflow-y:auto}
+.leaflet-popup-tip{background:#0f1419 !important;border:none !important}
+.leaflet-popup-close-button{color:#9ca3af !important;font-size:20px !important;padding:8px 10px !important}
+.leaflet-popup-close-button:hover{color:#fff !important}
+.leaflet-popup-content{margin:14px 18px !important;font-size:12px !important;line-height:1.55 !important;min-width:280px;max-width:340px;color:#fff !important}
+.popup-title{font-size:15px;font-weight:800;margin-bottom:6px;color:#fff;letter-spacing:-0.01em}
+.popup-rank{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;margin-right:4px;letter-spacing:0.05em;text-transform:uppercase}
+.popup-score{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.popup-tagline{font-style:italic;color:#fbbf24;font-size:11px;margin:8px 0 10px 0;padding:6px 8px;background:rgba(251,191,36,0.08);border-left:2px solid #fbbf24;border-radius:0 4px 4px 0}
+.popup-row{display:flex;align-items:flex-start;gap:8px;margin:3px 0;flex-wrap:nowrap}
+.popup-label{color:#9ca3af;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;min-width:140px;flex-shrink:0;padding-top:2px}
+.popup-value{color:#fff;font-size:12px;flex:1;word-break:normal;overflow-wrap:normal;line-height:1.5}
+.popup-insight{margin-top:10px;padding:8px 10px;background:rgba(200,16,46,0.1);border-left:3px solid #c8102e;border-radius:0 4px 4px 0;font-style:italic;color:#fca5a5;font-size:11px}
+.popup-extra{margin-top:8px;padding:8px 10px;background:rgba(22,163,74,0.1);border-left:3px solid #16a34a;border-radius:0 4px 4px 0;font-size:11px;color:#86efac}
+.rank-tag{background:rgba(0,0,0,0.9);color:#fff;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:800;border:1.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.5);font-family:'Inter',monospace}
+.leaflet-tooltip{background:#0f1419 !important;color:#fff !important;border:1px solid rgba(255,255,255,0.15) !important;padding:6px 10px !important;font-size:11px !important;font-weight:600 !important;border-radius:6px !important;box-shadow:0 4px 12px rgba(0,0,0,0.5) !important}
+.leaflet-tooltip:before{border-top-color:rgba(255,255,255,0.15) !important}
+@media (max-width:640px){
+  .leaflet-popup-content{min-width:240px !important;max-width:300px !important;margin:10px 14px !important;font-size:11px !important}
+  .popup-label{min-width:100px;font-size:8px}
+  .popup-value{font-size:11px}
+  .popup-title{font-size:13px}
+  .insight-bar{font-size:10px;padding:8px 12px}
+  .legend{max-width:160px;font-size:10px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Flour<span>Frontier</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="case-study.html">Case Study</a>
+      <a href="deck.html">Deck</a>
+      <a href="national.html" class="active">National Map</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+<div class="insight-bar">
+  <strong>The True 5</strong> · #1 Houston <span class="pill good">Index 49 opportunity</span> · #2 DFW <span class="pill good">Sysco-TX bleed</span> · #3 Atlanta <span class="pill good">GFS +122.5%</span> · #4 Tampa <span class="pill good">+13.9% GMI</span> · #5 Phoenix <span class="pill good">Only positive in West</span>
+</div>
+<div id="map"></div>
+</div>
+<script>
+const metros=[
+  {name:"Houston",lat:29.76,lng:-95.37,score:5,rank:1,tagline:"Biggest accessible flour opportunity in the country",pop:"7.51M",cagr:"+1.42%",censusRegion:"South",zone:"WEST (Mueting)",ae:"Gus Patrick",distributor:"Labatt-San Antonio, Sysco-Houston",hqInflow:"Energy giants (ExxonMobil, ConocoPhillips, BP), medical (Texas Medical Center anchor)",industries:"Energy, petrochem, healthcare, hospitality, education",fy26eqc:"~88K (8.8M lb · Index 49 vs 100 parity)",plYoY:"-4%",growth10yr:"+15-19%",mill:"Kansas City (462 mi to Arlington WH, +240 mi truck)",warehouse:"Arlington WH (240 mi)",transport:"Intermodal + truck",insight:"GMI Index 49, biggest market opportunity in the country. ~8.8M lb annual gap to parity."},
+  {name:"Dallas-Fort Worth",lat:32.78,lng:-96.80,score:5,rank:2,tagline:"Largest market with biggest current bleed",pop:"8.10M",cagr:"+1.74%",censusRegion:"South",zone:"WEST (Mueting)",ae:"Open (Melissa Magsalin)",distributor:"Sysco-Central TX, Sysco-North TX",hqInflow:"Toyota, AT&T, ExxonMobil, McKesson, Caterpillar, Charles Schwab",industries:"Tech, finance, logistics, hospitality, manufacturing",fy26eqc:"~145K",plYoY:"-12%",growth10yr:"+18-22%",mill:"Kansas City (462 mi)",warehouse:"Arlington WH (25 mi)",transport:"Truck → Arlington WH",insight:"DFW market growing +5.3% YoY. Sysco-CTX -38%, Sysco-NTX -36% are execution issues, not market issues."},
+  {name:"Atlanta",lat:33.75,lng:-84.39,score:5,rank:3,tagline:"GFS partnership already validating Southeast play",pop:"6.30M",cagr:"+1.28%",censusRegion:"South",zone:"EAST (Tiemeyer)",ae:"Josh Cohen",distributor:"GFS-Shepherdsville, Sysco-Atlanta",hqInflow:"Coca\u2011Cola, Delta, Home Depot, UPS, Chick\u2011fil\u2011A, Mercedes\u2011Benz USA",industries:"Logistics, beverage, QSR HQs, hospitality, film/TV",fy26eqc:"~102K",plYoY:"-6%",growth10yr:"+14-18%",mill:"Kansas City (798 mi)",warehouse:"Mechanicsburg WH (770 mi) — Atlanta WH proposed",transport:"Long-haul intermodal rail",insight:"GFS-Shepherdsville already +122.5% YoY. Biggest cold spot in the network — Atlanta WH (if approved) is single biggest cost-to-serve opportunity in the country."},
+  {name:"Tampa-St. Pete",lat:27.95,lng:-82.46,score:5,rank:4,tagline:"Fastest GMI growth among True 5",pop:"3.34M",cagr:"+1.51%",censusRegion:"South",zone:"EAST (Tiemeyer)",ae:"Jeffrey Santiago",distributor:"Cheney Brothers, Sysco-West Coast FL",hqInflow:"Citigroup (TPA), Raymond James, Jabil, PSCU, Sykes",industries:"Tourism, hospitality, healthcare, financial services, retirement economy",fy26eqc:"~54K",plYoY:"-8%",growth10yr:"+19-23%",mill:"Buffalo (1,001 mi)",warehouse:"Orlando WH (84 mi) — Atlanta WH (if approved) cuts SE haul",transport:"Long-haul rail → Orlando WH",insight:"+13.9% GMI YoY (fastest True 5). Most expensive metro to serve at 2.2x truck baseline. Toll-mill or Atlanta WH would compress cost-to-serve."},
+  {name:"Phoenix",lat:33.45,lng:-112.07,score:5,rank:5,tagline:"Only True 5 with positive YoY in losing region",pop:"5.10M",cagr:"+1.82%",censusRegion:"West",zone:"WEST (Mueting)",ae:"Shotsie Wilson",distributor:"Shamrock Foods, Sysco-Arizona",hqInflow:"Intel, Honeywell Aerospace, Avnet, Republic Services, Insight",industries:"Semiconductors, healthcare, hospitality, construction, retirement",fy26eqc:"~71K",plYoY:"+3%",growth10yr:"+22-26%",mill:"Vernon, CA (370 mi)",warehouse:"Stockton WH (708 mi)",transport:"Direct truck — best transport story in network",insight:"Best-served True 5. West region GMI losing 1.1pp share, so this is the defensive anchor. Shamrock + Wilson playbook is replicable."},
+  {name:"Charlotte",lat:35.23,lng:-80.84,score:4,rank:null,tagline:"Watch-list — could promote to True 5 by 2028",pop:"2.79M",cagr:"+1.65%",censusRegion:"South",zone:"EAST (Tiemeyer)",ae:"Josh Cohen",distributor:"US Foods-Charlotte, Sysco-Charlotte",hqInflow:"Truist, LendingTree, Honeywell, Lowe's, Bank of America, Duke Energy",industries:"Banking, energy, tech, motorsports, healthcare",fy26eqc:"~38K",plYoY:"+1%",growth10yr:"+16-20%",mill:"Kansas City (897 mi)",warehouse:"Mechanicsburg WH (490 mi) — Atlanta WH (if approved) drops to ~250 mi",transport:"Intermodal rail",insight:"Strong HQ inflow story. Atlanta WH (if approved) shifts Charlotte from intermodal to direct truck."},
+  {name:"Nashville",lat:36.16,lng:-86.78,score:4,rank:null,tagline:"Strong territory with growth momentum",pop:"2.04M",cagr:"+1.57%",censusRegion:"South",zone:"EAST (Tiemeyer)",ae:"Josh Cohen",distributor:"GFS, Sysco-Nashville",hqInflow:"Amazon HQ2-ish (5K+ jobs), Oracle, AllianceBernstein, HCA Healthcare",industries:"Healthcare, music/entertainment, automotive (Nissan), logistics",fy26eqc:"~31K",plYoY:"+4%",growth10yr:"+17-21%",mill:"Kansas City (533 mi)",warehouse:"Mechanicsburg WH (730 mi)",transport:"Intermodal — fringe truck range",insight:"GMI Index 152 — well above national parity. Strong territory with growth momentum from prior coverage; Josh Cohen now owns the relationship."},
+  {name:"Denver",lat:39.74,lng:-104.99,score:3,rank:null,tagline:"Solid market, slowing growth — maintain",pop:"3.00M",cagr:"+1.12%",censusRegion:"West",zone:"WEST (Mueting)",ae:"Shotsie Wilson",distributor:"Shamrock Foods, US Foods-Denver",hqInflow:"Palantir (relocated 2020), Arrow Electronics, DaVita, Liberty Media",industries:"Aerospace, energy (oil & gas), tech, outdoor recreation, hospitality",fy26eqc:"~32K",plYoY:"-1%",growth10yr:"+10-13%",mill:"Kansas City (605 mi)",warehouse:"Stockton WH (1,100 mi)",transport:"Intermodal rail",insight:"Mountain West gateway. Shotsie owns AE relationship across CO, MT, WY, ID."},
+  {name:"Seattle",lat:47.61,lng:-122.33,score:3,rank:null,tagline:"Tech-driven FS demand but slowing",pop:"4.02M",cagr:"+0.94%",censusRegion:"West",zone:"WEST (Mueting)",ae:"Yoel Sharabi",distributor:"US Foods-Seattle, Sysco-Seattle",hqInflow:"Amazon, Microsoft, Starbucks, Boeing, Costco, T\u2011Mobile, Expedia",industries:"Tech, aerospace, coffee/retail HQs, healthcare, maritime",fy26eqc:"~42K",plYoY:"-2%",growth10yr:"+8-11%",mill:"Great Falls, MT (~520 mi)",warehouse:"Stockton WH (810 mi)",transport:"Long-haul rail",insight:"Mature market, regulatory headwinds. Great Falls is the natural mill anchor."},
+  {name:"Boston",lat:42.36,lng:-71.06,score:2,rank:null,tagline:"Mature market, high cost",pop:"4.94M",cagr:"+0.52%",censusRegion:"Northeast",zone:"EAST (Tiemeyer)",ae:"Tim Cipriano",distributor:"PFG-Springfield, Sysco-Boston",hqInflow:"Limited — Boston is a retention market, not a relocation destination",industries:"Healthcare, education (Harvard/MIT ecosystem), biotech, financial services",fy26eqc:"~48K",plYoY:"-3%",growth10yr:"+3-6%",mill:"Buffalo (455 mi)",warehouse:"Mechanicsburg WH (340 mi)",transport:"Truck",insight:"Mature, slow-growth, expensive. NE region has 56% GMI share already (saturated)."},
+  {name:"Minneapolis",lat:44.98,lng:-93.27,score:2,rank:null,tagline:"Home market, slow growth despite proximity",pop:"3.69M",cagr:"+0.71%",censusRegion:"Central",zone:"WEST (Mueting)",ae:"Open (Not Covered)",distributor:"Sysco-Minnesota, Reinhart",hqInflow:"Target, Best Buy, US Bancorp, 3M, UnitedHealth, General Mills",industries:"Retail HQs, healthcare, food (us!), agriculture, financial services",fy26eqc:"~28K",plYoY:"-5%",growth10yr:"+4-7%",mill:"Avon, IA (231 mi)",warehouse:"Independence WH (440 mi)",transport:"Direct truck",insight:"WHQ home market. Central region growing fastest +5.5% but ND-SD-NE-MN-IA-WI territory is uncovered."},
+  {name:"Detroit",lat:42.33,lng:-83.05,score:1,rank:null,tagline:"Declining metro — defend, do not invest",pop:"4.39M",cagr:"-0.18%",censusRegion:"Central",zone:"WEST (Mueting)",ae:"Dean Psyhogios",distributor:"Gordon Food Service, Sysco-Detroit",hqInflow:"Low — auto sector declining, Ford and GM contracting",industries:"Auto, manufacturing (declining), healthcare",fy26eqc:"~45K",plYoY:"-9%",growth10yr:"-2 to +1%",mill:"Buffalo (290 mi)",warehouse:"Mechanicsburg WH (440 mi)",transport:"Direct truck",insight:"Aging demographics, shrinking workforce. Dean owns KY-OH-IN-IL-MI under James."},
+  {name:"Cleveland",lat:41.50,lng:-81.69,score:1,rank:null,tagline:"Cold spot — aging and declining",pop:"2.06M",cagr:"-0.31%",censusRegion:"Central",zone:"WEST (Mueting)",ae:"Dean Psyhogios",distributor:"PFG-Cleveland, Sysco-Cleveland",hqInflow:"Limited — Sherwin\u2011Williams stayed, KeyCorp anchor",industries:"Healthcare (Cleveland Clinic), manufacturing, banking, insurance",fy26eqc:"~22K",plYoY:"-11%",growth10yr:"-3 to 0%",mill:"Buffalo (188 mi)",warehouse:"Mechanicsburg WH (290 mi)",transport:"Direct truck",insight:"Shrinking population. Cleveland Clinic is the only real anchor."},
+  {name:"Buffalo",lat:42.89,lng:-78.88,score:1,rank:null,tagline:"Mill home market — defend the base",pop:"1.16M",cagr:"-0.22%",censusRegion:"Northeast",zone:"EAST (Tiemeyer)",ae:"Kevin Karbo",distributor:"Sysco-Albany, Upstate distributors",hqInflow:"Minimal — M&T Bank anchor, some healthcare growth",industries:"Healthcare, education, manufacturing, finance",fy26eqc:"~14K",plYoY:"-7%",growth10yr:"-2 to 0%",mill:"Buffalo (co-located)",warehouse:"Buffalo WH (co-located)",transport:"Local truck",insight:"Mill home. Kevin owns WV-Western PA-Western NY."}
+];
+const mills=[
+  {name:"Vernon Mill (CA)",lat:34.00,lng:-118.21,code:"VN"},
+  {name:"Great Falls Mill (MT)",lat:47.50,lng:-111.30,code:"GF"},
+  {name:"Kansas City Mill (MO)",lat:39.10,lng:-94.58,code:"KC"},
+  {name:"Avon Mill (IA)",lat:41.55,lng:-93.49,code:"AV"},
+  {name:"Buffalo Mill (NY)",lat:43.05,lng:-78.88,code:"BF",note:"Offset 11mi north so Buffalo metro stays clickable"}
+];
+const warehouses=[
+  {name:"Stockton WH (CA)",lat:37.96,lng:-121.27,code:"UQ"},
+  {name:"Arlington WH (TX)",lat:32.70,lng:-97.10,code:"V4"},
+  {name:"Independence WH (MO)",lat:39.09,lng:-94.41,code:"AT"},
+  {name:"Orlando WH (FL)",lat:28.54,lng:-81.38,code:"OO"},
+  {name:"Mechanicsburg WH (PA)",lat:40.21,lng:-77.00,code:"A6"},
+  {name:"Buffalo WH (NY)",lat:42.89,lng:-78.65,code:"S3",note:"Offset 12mi east of Buffalo metro"}
+];
+const scoreColors={5:"#c8102e",4:"#16a34a",3:"#fbbf24",2:"#a855f7",1:"#3b82f6"};
+const rankColors={1:"#c8102e",2:"#fb923c",3:"#fbbf24",4:"#16a34a",5:"#3b82f6"};
+const map=L.map('map',{zoomControl:true,scrollWheelZoom:true,minZoom:3,maxZoom:10}).setView([39.0,-97.0],4.3);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  attribution:'© OpenStreetMap © CARTO',
+  subdomains:'abcd',
+  maxZoom:19
+}).addTo(map);
+function buildPopup(m){
+  const rankBadge=m.rank?`<span class="popup-rank" style="background:${rankColors[m.rank]};color:#fff;">Rank #${m.rank}</span>`:'';
+  const extraBlock=m.warehouse&&m.warehouse.includes('Atlanta WH')?`<div class="popup-extra">⊕ Atlanta WH (if approved) would compress this metro's cost-to-serve meaningfully.</div>`:'';
+  return `
+    <div class="popup-title">${m.name}</div>
+    <div>${rankBadge}<span class="popup-score" style="background:${scoreColors[m.score]};color:#fff;">Score ${m.score}</span></div>
+    ${m.tagline?`<div class="popup-tagline">"${m.tagline}"</div>`:''}
+    <div class="popup-row"><span class="popup-label">US Region</span><span class="popup-value">${m.censusRegion}</span></div>
+    <div class="popup-row"><span class="popup-label">GM Zone</span><span class="popup-value">${m.zone}</span></div>
+    <div class="popup-row"><span class="popup-label">AE</span><span class="popup-value">${m.ae}</span></div>
+    <div class="popup-row"><span class="popup-label">Top Distributor</span><span class="popup-value">${m.distributor}</span></div>
+    <div class="popup-row"><span class="popup-label">Population</span><span class="popup-value">${m.pop} · CAGR ${m.cagr}</span></div>
+    <div class="popup-row"><span class="popup-label">10yr Pop Projection</span><span class="popup-value">${m.growth10yr}</span></div>
+    <div class="popup-row"><span class="popup-label">HQ Inflow</span><span class="popup-value">${m.hqInflow}</span></div>
+    <div class="popup-row"><span class="popup-label">Industries</span><span class="popup-value">${m.industries}</span></div>
+    <div class="popup-row"><span class="popup-label">FY26 Flour EQC</span><span class="popup-value">${m.fy26eqc}</span></div>
+    <div class="popup-row"><span class="popup-label">P&L YoY</span><span class="popup-value">${m.plYoY}</span></div>
+    <div class="popup-row"><span class="popup-label">Nearest Mill</span><span class="popup-value">${m.mill}</span></div>
+    <div class="popup-row"><span class="popup-label">Nearest Warehouse</span><span class="popup-value">${m.warehouse}</span></div>
+    <div class="popup-row"><span class="popup-label">Transport Mode</span><span class="popup-value">${m.transport}</span></div>
+    <div class="popup-insight">${m.insight}</div>
+    ${extraBlock}
+  `;
+}
+const popupOptions = {
+  maxWidth: 380,
+  minWidth: 280,
+  autoPan: true,
+  autoPanPadding: L.point(40, 40),
+  keepInView: true,
+  closeButton: true,
+  className: 'metro-popup'
+};
+metros.forEach(m=>{
+  const radius=m.score===5?17:m.score===4?13:11;
+  const marker=L.circleMarker([m.lat,m.lng],{
+    radius,fillColor:scoreColors[m.score],color:'#fff',weight:2.5,opacity:1,fillOpacity:0.92,
+    pane:'markerPane'
+  }).addTo(map);
+  const tt=m.rank?`<strong>#${m.rank} · ${m.name}</strong> · ${m.plYoY} YoY`:`<strong>${m.name}</strong> · Score ${m.score} · ${m.plYoY} YoY`;
+  marker.bindTooltip(tt,{direction:'top',offset:[0,-10],className:'metro-tooltip'});
+  marker.bindPopup(buildPopup(m), popupOptions);
+  if(m.score===5){
+    L.circleMarker([m.lat,m.lng],{radius:28,color:'#c8102e',weight:2,opacity:0.4,fillOpacity:0,interactive:false}).addTo(map);
+  }
+  if(m.rank){
+    const rankIcon=L.divIcon({
+      className:'rank-tag-wrap',
+      html:`<div class="rank-tag" style="background:${rankColors[m.rank]};">#${m.rank}</div>`,
+      iconSize:[32,22],iconAnchor:[-12,11]
+    });
+    L.marker([m.lat,m.lng],{icon:rankIcon,interactive:false}).addTo(map);
+  }
+});
+mills.forEach(mill=>{
+  const icon=L.divIcon({
+    className:'mill-icon',
+    html:`<div style="width:14px;height:14px;background:#1a2332;transform:rotate(45deg);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>`,
+    iconSize:[20,20],iconAnchor:[10,10]
+  });
+  L.marker([mill.lat,mill.lng],{icon,zIndexOffset:500}).addTo(map)
+    .bindTooltip(`◆ ${mill.name}`,{direction:'top'})
+    .bindPopup(`<div class="popup-title">${mill.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GM Mill</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${mill.code}</span></div>`, popupOptions);
+});
+warehouses.forEach(wh=>{
+  const icon=L.divIcon({
+    className:'wh-icon',
+    html:`<div style="width:11px;height:11px;background:#1a2332;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>`,
+    iconSize:[16,16],iconAnchor:[8,8]
+  });
+  L.marker([wh.lat,wh.lng],{icon,zIndexOffset:400}).addTo(map)
+    .bindTooltip(`■ ${wh.name}`,{direction:'top'})
+    .bindPopup(`<div class="popup-title">${wh.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GM Warehouse</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${wh.code}</span></div>`, popupOptions);
+});
+const legend=L.control({position:'bottomright'});
+legend.onAdd=function(){
+  const div=L.DomUtil.create('div','legend');
+  div.innerHTML=`
+    <strong>The True 5</strong>
+    <div><span class="rank-badge" style="background:${rankColors[1]};">#1</span> Houston</div>
+    <div><span class="rank-badge" style="background:${rankColors[2]};">#2</span> DFW</div>
+    <div><span class="rank-badge" style="background:${rankColors[3]};">#3</span> Atlanta</div>
+    <div><span class="rank-badge" style="background:${rankColors[4]};">#4</span> Tampa</div>
+    <div><span class="rank-badge" style="background:${rankColors[5]};">#5</span> Phoenix</div>
+    <strong>Metro Score</strong>
+    <div><span class="dot" style="background:${scoreColors[5]}"></span> 5 — Hot</div>
+    <div><span class="dot" style="background:${scoreColors[4]}"></span> 4 — Watch list</div>
+    <div><span class="dot" style="background:${scoreColors[3]}"></span> 3 — Steady</div>
+    <div><span class="dot" style="background:${scoreColors[2]}"></span> 2 — Underperforming</div>
+    <div><span class="dot" style="background:${scoreColors[1]}"></span> 1 — Cold</div>
+    <strong>GM Footprint</strong>
+    <div><span class="diamond"></span> Mill</div>
+    <div><span class="square"></span> Warehouse</div>
+  `;
+  return div;
+};
+legend.addTo(map);
+</script>
+</body>
+</html>

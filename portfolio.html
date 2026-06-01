@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio · Flour Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e13;color:#e5e7eb;line-height:1.6;font-feature-settings:'cv02','cv03','cv04','cv11'}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1f2937}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1400px;margin:0 auto}
+.nav-brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#fff;display:flex;align-items:center;gap:10px}
+.nav-brand .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
+.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav-link{padding:8px 14px;font-size:13px;color:#9ca3af;border-radius:6px;transition:all .15s}
+.nav-link:hover{color:#fff;background:#1f2937}
+.nav-link.active{color:#fff;background:#1f2937}
+.footer{margin-top:120px;padding:60px 32px 40px;border-top:1px solid #1f2937;background:#070a0e}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
+.footer-brand{font-size:14px;color:#9ca3af;line-height:1.7}
+.footer-brand-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-brand-title .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
+.footer-col h4{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;font-weight:600}
+.footer-col a{display:block;font-size:13px;color:#9ca3af;padding:5px 0;transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:24px;border-top:1px solid #1f2937;font-size:12px;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.nav-inner{padding:14px 20px}.container{padding:0 20px}.nav-link{padding:6px 10px;font-size:12px}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr}}
+.p-hero{padding:80px 0 60px}
+.p-eyebrow{font-size:12px;letter-spacing:.15em;color:#c8102e;font-weight:600;margin-bottom:16px;text-transform:uppercase}
+.p-h1{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.025em;color:#fff;margin-bottom:28px}
+.p-lead{font-size:18px;line-height:1.7;color:#9ca3af;max-width:760px}
+.section{padding:60px 0;border-top:1px solid #1f2937}
+.section-num{font-size:10px;color:#6b7280;letter-spacing:.18em;font-weight:700;margin-bottom:14px;text-transform:uppercase}
+.section-title{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:24px;line-height:1.2}
+.section-body{font-size:16px;line-height:1.8;color:#d1d5db;max-width:880px}
+.section-body p{margin-bottom:18px}
+.section-body p:last-child{margin-bottom:0}
+.section-body strong{color:#fff;font-weight:600}
+.findings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+.finding{padding:28px;background:#0f1722;border:1px solid #1f2937;border-radius:12px}
+.finding-num{font-size:10px;color:#c8102e;letter-spacing:.15em;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+.finding-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.01em;line-height:1.3}
+.finding-body{font-size:14px;color:#9ca3af;line-height:1.7}
+.finding-body strong{color:#fff}
+.phase-list{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.phase{padding:24px 28px;background:#0f1722;border:1px solid #1f2937;border-radius:12px;border-left:4px solid var(--pc,#c8102e)}
+.phase[data-n="1"]{--pc:#c8102e}
+.phase[data-n="2"]{--pc:#f97316}
+.phase[data-n="3"]{--pc:#eab308}
+.phase[data-n="4"]{--pc:#22c55e}
+.phase-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:10px}
+.phase-title{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.phase-window{font-size:11px;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.phase-body{font-size:14px;color:#d1d5db;line-height:1.7;margin-bottom:8px}
+.phase-owner{font-size:12px;color:#9ca3af;font-style:italic}
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.del-card{padding:24px;background:#0f1722;border:1px solid #1f2937;border-radius:10px;transition:all .15s}
+.del-card:hover{border-color:#374151}
+.del-icon{font-size:10px;color:#c8102e;letter-spacing:.12em;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.del-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;line-height:1.3}
+.del-desc{font-size:12px;color:#9ca3af;line-height:1.5}
+.thank-list{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.thank-row{display:grid;grid-template-columns:180px 1fr;gap:18px;padding:18px 22px;background:#0f1722;border:1px solid #1f2937;border-radius:10px}
+.thank-who{font-size:14px;font-weight:700;color:#fff;line-height:1.4}
+.thank-who span{display:block;font-weight:400;color:#9ca3af;font-size:12px;margin-top:4px}
+.thank-why{font-size:14px;color:#d1d5db;line-height:1.6}
+.ask-block{margin-top:48px;padding:48px 32px;background:#0f1722;border:1px solid #c8102e22;border-radius:14px;text-align:center}
+.ask-label{font-size:11px;color:#c8102e;letter-spacing:.18em;font-weight:700;margin-bottom:14px;text-transform:uppercase}
+.ask-h{font-size:38px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:20px;line-height:1.2}
+.ask-text{font-size:16px;color:#d1d5db;line-height:1.6;max-width:760px;margin:0 auto;white-space:nowrap;overflow-x:auto}
+@media(max-width:900px){.p-h1{font-size:34px}.section-title{font-size:24px}.findings-grid,.del-grid{grid-template-columns:1fr}.thank-row{grid-template-columns:1fr;gap:6px}.ask-h{font-size:26px}.ask-text{white-space:normal;font-size:14px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="index.html"><span class="dot"></span>FLOUR FRONTIER</a><div class="nav-links"><a class="nav-link " href="index.html">Home</a><a class="nav-link active" href="portfolio.html">Portfolio</a><a class="nav-link " href="case-study.html">Case Study</a><a class="nav-link " href="deck.html">Deck</a><a class="nav-link " href="national.html">National Map</a><a class="nav-link " href="about.html">About</a></div></div></nav>
+
+<section class="p-hero">
+<div class="container">
+<div class="p-eyebrow">Internship Portfolio · Summer 2026</div>
+<h1 class="p-h1">Flour Frontier Project Portfolio</h1>
+<p class="p-lead">A ten section walkthrough of how the summer actually went. The brief, the data, the methodology, the findings, the four recommendations, the lessons, and what I am handing off to the team. Read top to bottom or jump around.</p>
+</div>
+</section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 1</div>
+<h2 class="section-title">Who I am</h2>
+<div class="section-body">
+<p>I am Jake Gilstein, a North America Foodservice Sales Intern at General Mills in the Summer 2026 cohort. I am a senior at the University of South Florida graduating December 2026 with a B.S. in Business Management and a Minor in Marketing. Born in Brooklyn, NY. Raised in Philadelphia, PA. Now splitting time between St. Augustine, FL and Tampa, FL.</p>
+<p>My background blends two angles that turned out to be directly useful at General Mills. I spent the last 8 to 9 months at Scotlynn as a Logistics Account Manager Associate, brokering freight partnerships for major CPG clients, which gave me a working knowledge of how product physically gets from a plant to a customer. The summer before that I was a Strategic Sales Intern at The H.T. Hackney Co. in Tampa, doing 60 store visits per week analyzing buyer behavior and refining route-to-market strategy. The 3PL logistics work and the strategic CPG sales work both showed up directly in the Flour Frontier analysis.</p>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 2</div>
+<h2 class="section-title">The brief</h2>
+<div class="section-body">
+<p>James Mueting, my Zone Manager FSI West, framed the project on day one. Look ten years out. Figure out where NAF FSI should focus flour milling and warehouse capacity. Back the recommendation with data. Operate within the current network. No new mill capex.</p>
+<p>The General Mills fiscal year starts June 1, which means the recommendations land in the middle of FY27 Q1. The 90 day actions in Phase 1 execute through Q1 and into early Q2.</p>
+<p>The headline reality the project needed to absorb. Flour is 19M+ EQC of annual distribution with roughly flat year over year volume. The number hides a mixed story. Branded Sack and Distributor Label are 75% of the channel. Distributor Label is slipping across every major distributor. The strategic question is not "where is the market" but "where do we put our energy first, with what we already have."</p>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 3</div>
+<h2 class="section-title">The approach</h2>
+<div class="section-body">
+<p>Six analytical phases over ten weeks.</p>
+<p><strong>Phase 1:</strong> Pulled the top 50 US metros from Circana, NIQ, and Nielsen DMA rankings. Built a baseline of population, projected growth, foodservice density, and current GM presence.</p>
+<p><strong>Phase 2:</strong> Joined that list to GM's mill and warehouse footprint with pairwise distances. Identified the supply chain gaps.</p>
+<p><strong>Phase 3:</strong> Layered GMI Region Full and Account Full data from Tableau, broken down by AE, distributor, and metro. Year over year EQC change at the account level.</p>
+<p><strong>Phase 4:</strong> Added Circana TTM data at the US Census Region level (Northeast, Central, South, West) to validate the metro signal against the regional one.</p>
+<p><strong>Phase 5:</strong> Built a six dimension scoring framework. Market Opportunity, Market Health, Future Growth, HQ Inflow, Trajectory Proof, Transport Quality. Normalized 1 to 5 within the True 5 group. Composite produces the final ranking.</p>
+<p><strong>Phase 6:</strong> Pressure tested the ranking against four sensitivity lenses and against the Account Executives who actually own the territories.</p>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 4</div>
+<h2 class="section-title">What the data said</h2>
+<div class="section-body" style="margin-bottom:8px"><p>Four findings shaped the recommendation.</p></div>
+<div class="findings-grid">
+<div class="finding">
+<div class="finding-num">Finding 1</div>
+<div class="finding-title">Houston is the biggest accessible opportunity in the country</div>
+<div class="finding-body">Houston is a 60.3M lb DMA where GM holds <strong>GMI Index 49</strong>, less than half national parity. The gap is roughly <strong>8 to 9 million pounds of annual flour</strong> we are leaving on the table. No other True 5 has a TAM gap that big.</div>
+</div>
+<div class="finding">
+<div class="finding-num">Finding 2</div>
+<div class="finding-title">Texas is execution, not market</div>
+<div class="finding-body">Sysco Central TX is down 38% YoY and Sysco North TX is down 36% YoY. But the underlying DFW market is <strong>growing +5.3% YoY</strong>. This is recoverable customer execution, not a market in decline. Top 5 customer losses in the entire NAF book.</div>
+</div>
+<div class="finding">
+<div class="finding-num">Finding 3</div>
+<div class="finding-title">Atlanta GFS is already winning, double down</div>
+<div class="finding-body">While the overall Atlanta DMA flour market declined, <strong>GMI through GFS Shepherdsville grew +122.5% YoY</strong>. The recommendation in Phase 2 is not theoretical, it is the live trajectory. Dean Psyhogios owns this and is already executing.</div>
+</div>
+<div class="finding">
+<div class="finding-num">Finding 4</div>
+<div class="finding-title">An Atlanta warehouse would change the whole Southeast equation</div>
+<div class="finding-body">The single biggest network move available is the <strong>proposed Atlanta warehouse</strong>. It would compress cost-to-serve for the entire Southeast corridor (Atlanta, Charlotte, Nashville, Tampa) without any new mill capex. This is the highest leverage move in the four phase plan.</div>
+</div>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 5</div>
+<h2 class="section-title">What I built</h2>
+<div class="section-body"><p>Five deliverables for the team to use after the internship.</p></div>
+<div class="del-grid">
+<div class="del-card"><div class="del-icon">Deliverable</div><div class="del-title">Deck</div><div class="del-desc">5 slides for my 10 minute presentation</div></div>
+<div class="del-card"><div class="del-icon">Deliverable</div><div class="del-title">Master Workbook</div><div class="del-desc">Excel workbook with ranking, sensitivity lenses, measurables, phased plans and much more</div></div>
+<div class="del-card"><div class="del-icon">Deliverable</div><div class="del-title">Executive Summary</div><div class="del-desc">1 page printable PDF</div></div>
+<div class="del-card"><div class="del-icon">Deliverable</div><div class="del-title">National Map</div><div class="del-desc">Interactive Leaflet map with hover stats for every True 5 metro</div></div>
+<div class="del-card"><div class="del-icon">Deliverable</div><div class="del-title">Case Study</div><div class="del-desc">Full analytical write up on this site, structured for an external reader</div></div>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 6</div>
+<h2 class="section-title">The recommendation</h2>
+<div class="section-body"><p>Four phases. Zero new capital investment required. All within the current 5 mill, 5 warehouse network.</p></div>
+<div class="phase-list">
+<div class="phase" data-n="1">
+<div class="phase-head"><div class="phase-title">Phase 1 · Fix Texas Execution</div><div class="phase-window">Next 90 Days · FY27 Q1</div></div>
+<div class="phase-body">Pull Sysco-CTX and Sysco-NTX account histories. Quantify competitive vs program vs distributor consolidation. Stabilize the top 5 customer losses by end of FY27 Q1. The DFW market is healthy at +5.3% YoY, so this is recoverable.</div>
+<div class="phase-owner">Owner: Gus Patrick (Houston) + Melissa Magsalin (DFW) · James Mueting</div>
+</div>
+<div class="phase" data-n="2">
+<div class="phase-head"><div class="phase-title">Phase 2 · Win the Southeast Corridor</div><div class="phase-window">3 to 12 Months · FY27 Q1 - Q4</div></div>
+<div class="phase-body">Evaluate the proposed Atlanta warehouse cost-to-serve case (biggest SE leverage available, no mill capex). Deepen GFS Shepherdsville where Dean Psyhogios is already running +122.5% YoY. Commission Florida toll-mill feasibility. Replicate Josh Cohen's Nashville playbook across Josh Cohen and Jeffrey Santiago territories.</div>
+<div class="phase-owner">Owner: Josh Cohen + Dean Psyhogios (GFS-KY hub) + Jeffrey Santiago · GM Supply Chain + Melissa Tiemeyer</div>
+</div>
+<div class="phase" data-n="3">
+<div class="phase-head"><div class="phase-title">Phase 3 · Build the Houston Opportunity Case</div><div class="phase-window">6 to 18 Months · FY27 Q2 - Q4</div></div>
+<div class="phase-body">Quantify the Houston Index 49 gap (~8-9M lb annual opportunity). Map the operator base by segment and channel. Build a Houston specific go-to-market plan in partnership with Labatt and Sysco-Houston, focused on the independent operator base and the petrochemical workforce concentration. This is an 18 month build, not a quarter sprint.</div>
+<div class="phase-owner">Owner: Gus Patrick + Melissa Magsalin · James Mueting</div>
+</div>
+<div class="phase" data-n="4">
+<div class="phase-head"><div class="phase-title">Phase 4 · Defend the West Without New Capex</div><div class="phase-window">12 to 24 Months · FY27 Q4 - FY28</div></div>
+<div class="phase-body">Circana shows West GMI losing 1.1pp of share and down 2.5% in volume. Phoenix is the only True 5 with positive YoY. Formalize the West Zone Playbook so that Shotsie Wilson, Yoel Sharabi, and Nancy Muller's best practices are reproducible. Document Vernon's truck-direct cost-to-serve advantage. Lock multi-year Custom Label deals with TX and GA chain HQs to anchor existing capacity.</div>
+<div class="phase-owner">Owner: Shotsie Wilson + Yoel Sharabi + Nancy Muller · James Mueting</div>
+</div>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 7</div>
+<h2 class="section-title">How I pressure tested it</h2>
+<div class="section-body">
+<p>The ranking holds under four sensitivity lenses. <strong>Lens A (default strategic weighting)</strong> gives Houston #1 and DFW #2. <strong>Lens B (pure TAM opportunity)</strong> gives Houston #1 again, with Atlanta moving into #2 because of the cold spot. <strong>Lens C (urgency, biggest current bleed)</strong> puts DFW #1 because of the Sysco execution losses, with Tampa #2 because of the long haul rail penalty. <strong>Lens D (trajectory, where momentum is)</strong> highlights Atlanta and Tampa because of the GFS +122.5% and the GMI +13.9% growth signals.</p>
+<p>The actionable insight: Houston wins under every weighting because the TAM gap is too large to ignore. DFW is the most urgent fix. The four phase plan respects both.</p>
+<p>I also pressure tested with the AEs directly. Gus Patrick on the Texas execution diagnosis. Dean Psyhogios on the GFS Shepherdsville trajectory. Josh Cohen on the Nashville playbook. Each one shaped the framing of the recommendation in real ways.</p>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 8</div>
+<h2 class="section-title">What I learned</h2>
+<div class="section-body">
+<p><strong>The data is sufficient, the conversations are necessary.</strong> Region Full data from Tableau told me Sysco Texas was down 38%. Gus Patrick told me why. Both pieces were necessary.</p>
+<p><strong>Bounded scope is a feature, not a bug.</strong> Knowing on day one that a new mill was not on the table forced the recommendation toward the moves that are actually available: distributor partnership deepening, warehouse network optimization, toll-milling feasibility, and AE playbook replication. The constraint made the analysis sharper.</p>
+<p><strong>The trajectory matters more than the position.</strong> Atlanta GFS at +122.5% YoY is worth more strategic attention than a static "we have low share here" datapoint. Where the line is going beats where the dot is sitting.</p>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 9</div>
+<h2 class="section-title">Thank you</h2>
+<div class="thank-list">
+<div class="thank-row"><div class="thank-who">James Mueting<span>Zone Manager FSI West</span></div><div class="thank-why">For trusting an intern with a real, ambiguous, high stakes question. Every weekly 1:1 made the work sharper.</div></div>
+<div class="thank-row"><div class="thank-who">Catherine Colon<span>Mentor</span></div><div class="thank-why">For pushing me to think strategically, not just analytically. The five "true 5" framing came directly out of one of our conversations.</div></div>
+<div class="thank-row"><div class="thank-who">Cathy Meyer<span>Director, NAF Ingredients</span></div><div class="thank-why">For the candid conversation about capacity reality and capex constraints. That conversation reshaped the entire Phase 4 of the recommendation toward network optimization rather than capital investment.</div></div>
+<div class="thank-row"><div class="thank-who">Melissa Tiemeyer<span>Zone Manager FSI East</span></div><div class="thank-why">For making time across zone lines and for being honest about the Southeast warehouse opportunity.</div></div>
+<div class="thank-row"><div class="thank-who">Zach Johnson<span>Senior NAE</span></div><div class="thank-why">For grounding the analysis in real account economics and pushing me to think bigger about distributor leverage.</div></div>
+<div class="thank-row"><div class="thank-who">JJ Jackson<span>NAE, Distributors</span></div><div class="thank-why">For framing the distributor channel dynamics that shape every flour conversation.</div></div>
+<div class="thank-row"><div class="thank-who">Gus Patrick & Melissa Magsalin<span>West Zone AEs (TX)</span></div><div class="thank-why">For the Houston and DFW context that turned "Texas is down" into "here is what is actually happening."</div></div>
+<div class="thank-row"><div class="thank-who">Josh Cohen<span>East Zone AE (SE)</span></div><div class="thank-why">For the Nashville playbook and the candid Charlotte read that anchored the Phase 2 framing.</div></div>
+<div class="thank-row"><div class="thank-who">Dean Psyhogios<span>East Zone AE (KY/OH/IN/IL/MI)</span></div><div class="thank-why">For the GFS Shepherdsville context that made Recommendation 2 land with proof rather than hypothesis.</div></div>
+<div class="thank-row"><div class="thank-who">Jeffrey Santiago<span>East Zone AE (FL)</span></div><div class="thank-why">For the Tampa, Miami, and Orlando ground truth that shaped the Florida toll-mill thinking.</div></div>
+<div class="thank-row"><div class="thank-who">Shotsie Wilson, Yoel Sharabi, Nancy Muller<span>West Zone AEs</span></div><div class="thank-why">For the Phoenix, Denver, and Seattle reads that informed the "Defend the West" framing.</div></div>
+<div class="thank-row"><div class="thank-who">Helen Nguyen<span>Summer Buddy</span></div><div class="thank-why">For the daily insight into how the internship actually works and what to expect at each milestone.</div></div>
+<div class="thank-row"><div class="thank-who">Blake Wigen + Ben Totta<span>Intern Program Leads</span></div><div class="thank-why">For building a structured ten weeks that left enough room to actually run a real project.</div></div>
+<div class="thank-row"><div class="thank-who">My NAF intern colleagues</div><div class="thank-why">For your daily support and encouragement. You made this summer more enjoyable, more memorable, and much easier to navigate.</div></div>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-num">Section 10</div>
+<h2 class="section-title">What I am handing off</h2>
+<div class="section-body">
+<p>A clear four phase plan with named owners, sized to the resources actually available. No new capital ask. Every recommendation works within the current 5 mill, 5 warehouse network. Phase 1 starts Monday after the presentation.</p>
+<p>The biggest single action item I am leaving on the table for the team: evaluate the proposed Atlanta warehouse. It is the highest leverage move in the network and it is the single thing I would most want to come back and finish working on.</p>
+</div>
+<div class="ask-block">
+<div class="ask-label">The Direct Ask</div>
+<div class="ask-h">I want to come back.</div>
+<div class="ask-text">The Flour Frontier project is not done, and I would like to be the one who finishes it.</div>
+</div>
+</div></section>
+
+<footer class="footer">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="footer-brand-title"><span class="dot"></span>FLOUR FRONTIER</div>
+A 10 week internship study analyzing where General Mills NAF FSI should allocate flour milling and warehouse capacity over the next 10 years.
+</div>
+<div class="footer-col"><h4>The Work</h4>
+<a href="portfolio.html">Portfolio</a>
+<a href="case-study.html">Case Study</a>
+<a href="deck.html">Deck</a></div>
+<div class="footer-col"><h4>Maps</h4>
+<a href="national.html">National Map</a>
+</div>
+<div class="footer-col"><h4>About</h4>
+<a href="about.html">About Jake</a>
+<a href="https://www.linkedin.com/in/jakegilstein/" target="_blank">LinkedIn</a>
+<a href="mailto:jmgilstein@gmail.com">Email</a>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2026 Jake Gilstein · Built during NAF FSI Sales Internship at General Mills</div>
+<div>St. Augustine, FL · Tampa, FL · Minneapolis WHQ</div>
+</div>
+</footer>
+</body></html>
