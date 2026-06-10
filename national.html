@@ -237,19 +237,19 @@ const legend=L.control({position:'bottomright'});
 legend.onAdd=function(){
   const div=L.DomUtil.create('div','legend');
   div.innerHTML=`
-    <strong>The True 5</strong>
+    <strong>Top 5</strong>
     <div><span class="rank-badge" style="background:${rankColors[1]};">#1</span> Houston</div>
     <div><span class="rank-badge" style="background:${rankColors[2]};">#2</span> DFW</div>
     <div><span class="rank-badge" style="background:${rankColors[3]};">#3</span> Atlanta</div>
     <div><span class="rank-badge" style="background:${rankColors[4]};">#4</span> Tampa</div>
     <div><span class="rank-badge" style="background:${rankColors[5]};">#5</span> Phoenix</div>
-    <strong>Metro Score</strong>
+    <strong>Metro score</strong>
     <div><span class="dot" style="background:${scoreColors[5]}"></span> 5 — Hot</div>
     <div><span class="dot" style="background:${scoreColors[4]}"></span> 4 — Watch list</div>
     <div><span class="dot" style="background:${scoreColors[3]}"></span> 3 — Steady</div>
     <div><span class="dot" style="background:${scoreColors[2]}"></span> 2 — Underperforming</div>
     <div><span class="dot" style="background:${scoreColors[1]}"></span> 1 — Cold</div>
-    <strong>GM Footprint</strong>
+    <strong>GMI network</strong>
     <div><span class="diamond"></span> Mill</div>
     <div><span class="square"></span> Warehouse</div>
     <strong>Coverage</strong>

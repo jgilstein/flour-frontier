@@ -2,139 +2,132 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Deck · Flour Frontier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck &middot; Flour Frontier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e13;color:#e5e7eb;line-height:1.6;font-feature-settings:'cv02','cv03','cv04','cv11'}
+html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-feature-settings:'cv02','cv03','cv04','cv11';line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 32px}
-.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1f2937}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1400px;margin:0 auto}
-.nav-brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#fff;display:flex;align-items:center;gap:10px}
-.nav-brand .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
-.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.nav-link{padding:8px 14px;font-size:13px;color:#9ca3af;border-radius:6px;transition:all .15s}
-.nav-link:hover{color:#fff;background:#1f2937}
-.nav-link.active{color:#fff;background:#1f2937}
-.deck-hero{padding:80px 0 28px}
-.deck-eyebrow{font-size:12px;letter-spacing:.15em;color:#c8102e;font-weight:600;margin-bottom:16px;text-transform:uppercase}
-.deck-h1{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.025em;color:#fff;margin-bottom:24px}
-.deck-lead{font-size:16px;line-height:1.7;color:#9ca3af;max-width:none;white-space:nowrap;margin-bottom:0}
-.downloads{padding:24px 0 80px;margin-top:0;border-top:1px solid #1f2937}
-.downloads-eyebrow{font-size:12px;letter-spacing:.15em;color:#c8102e;font-weight:600;margin-bottom:14px;text-transform:uppercase}
-.downloads-h2{font-size:32px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:32px;line-height:1.15}
-.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.dl-card{padding:32px 28px;background:#0f1722;border:1px solid #1f2937;border-radius:12px;transition:all .15s;display:flex;flex-direction:column;height:100%}
-.dl-card:hover{border-color:#c8102e;transform:translateY(-2px)}
-.dl-type{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:14px}
-.dl-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.01em;line-height:1.3}
-.dl-desc{font-size:13px;color:#9ca3af;line-height:1.6;margin-bottom:24px;flex:1}
-.dl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;background:#c8102e;color:#fff;font-size:13px;font-weight:600;border-radius:8px;transition:all .15s;align-self:flex-start}
-.dl-btn:hover{background:#a00c24}
-.slides{padding:60px 0}
-.slides-eyebrow{font-size:12px;letter-spacing:.15em;color:#c8102e;font-weight:600;margin-bottom:14px;text-transform:uppercase}
-.slides-h2{font-size:32px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:32px;line-height:1.15}
-.slide-list{display:flex;flex-direction:column;gap:14px}
-.slide-row{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:24px;background:#0f1722;border:1px solid #1f2937;border-radius:10px;align-items:center}
-.slide-num{font-size:32px;font-weight:800;color:#374151;letter-spacing:-.02em;line-height:1}
-.slide-title{font-size:17px;font-weight:600;color:#fff;margin-bottom:4px}
-.slide-desc{font-size:13px;color:#9ca3af;line-height:1.5}
-.footer{margin-top:120px;padding:60px 32px 40px;border-top:1px solid #1f2937;background:#070a0e}
-.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
-.footer-brand{font-size:14px;color:#9ca3af;line-height:1.7}
-.footer-brand-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.footer-brand-title .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
-.footer-col h4{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;font-weight:600}
-.footer-col a{display:block;font-size:13px;color:#9ca3af;padding:5px 0;transition:color .15s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:24px;border-top:1px solid #1f2937;font-size:12px;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-@media(max-width:1100px){.deck-lead{white-space:normal;max-width:700px}}
-@media(max-width:900px){.deck-h1{font-size:36px}.dl-grid{grid-template-columns:1fr}.slide-row{grid-template-columns:1fr;gap:8px}.slide-num{font-size:24px}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.nav-inner{padding:14px 20px}.container{padding:0 20px}.nav-link{padding:6px 10px;font-size:12px}}
-@media(max-width:600px){.footer-grid{grid-template-columns:1fr}}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.nav-brand{font-weight:800;font-size:15px;letter-spacing:-0.01em;color:#fff;text-decoration:none}
+.nav-brand span{color:#c8102e}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:#9ca3af;text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-links a.active{color:#fff;background:rgba(200,16,46,0.15)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.hero{padding:80px 32px 48px;max-width:1280px;margin:0 auto;text-align:left}
+.eyebrow{display:inline-block;font-size:15px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#c8102e;padding:8px 16px;border:1px solid rgba(200,16,46,0.3);border-radius:20px;margin-bottom:20px}
+.display{font-size:clamp(30px,4.4vw,50px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:28px;max-width:1200px}
+.lead{max-width:820px;font-size:18px;line-height:1.7;color:#cbd5e1}
+.section{padding:56px 0;border-top:1px solid rgba(255,255,255,0.08)}
+.section-num{font-size:15px;color:#cbd5e1;letter-spacing:.02em;font-weight:700;margin-bottom:16px;text-transform:none}
+.section-title{font-size:clamp(22px,2.6vw,28px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:24px;line-height:1.15}
+.body{font-size:16px;line-height:1.8;color:#cbd5e1;max-width:880px}
+.body p{margin-bottom:18px}
+.body p:last-child{margin-bottom:0}
+.body strong{color:#fff;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 8px}
+.stat{padding:28px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px}
+.stat .n{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1}
+.stat .n span{color:#c8102e}
+.stat .l{margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9ca3af}
+.t5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+.t5 .card{padding:24px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;position:relative;overflow:hidden}
+.t5 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc)}
+.t5 .card[data-r="1"]{--rc:#c8102e}.t5 .card[data-r="2"]{--rc:#f97316}.t5 .card[data-r="3"]{--rc:#eab308}.t5 .card[data-r="4"]{--rc:#22c55e}.t5 .card[data-r="5"]{--rc:#3b82f6}
+.t5 .r{font-size:12px;font-weight:700;color:var(--rc);letter-spacing:.05em;margin-bottom:8px}
+.t5 .m{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.t5 .c{font-size:12px;color:#6b7280;margin-bottom:8px;font-weight:600}
+.t5 .tag{font-size:12px;color:#9ca3af;line-height:1.5}
+.dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.dir a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dir a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dir .h{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.dir .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.callout{padding:24px 28px;background:rgba(200,16,46,0.06);border-left:4px solid #c8102e;border-radius:8px;margin:28px 0;font-size:15px;color:#e5e7eb;line-height:1.7}
+.callout strong{color:#fff}
+.note{padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:24px 0;font-size:14px;color:#9ca3af;line-height:1.6;font-style:italic;max-width:880px}
+.matrix{margin-top:24px;overflow-x:auto;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.matrix table{width:100%;border-collapse:collapse;font-size:13px}
+.matrix th{background:rgba(255,255,255,0.03);text-align:left;padding:12px 14px;font-weight:600;color:#9ca3af;text-transform:uppercase;font-size:11px;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,0.08)}
+.matrix td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.05);color:#cbd5e1}
+.matrix tr:last-child td{border-bottom:none}
+.matrix tr.composite td{background:rgba(200,16,46,0.07);color:#fff;font-weight:700}
+.matrix tr.composite td:first-child{color:#c8102e}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.lens{padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.lens .name{font-size:11px;color:#c8102e;letter-spacing:.12em;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.lens .q{font-size:14px;color:#fff;font-weight:600;margin-bottom:8px}
+.lens .a{font-size:13px;color:#9ca3af;line-height:1.6}
+.recs{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.rec{padding:24px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;border-left:4px solid var(--pc,#c8102e)}
+.rec[data-n="1"]{--pc:#c8102e}.rec[data-n="2"]{--pc:#f97316}.rec[data-n="3"]{--pc:#eab308}.rec[data-n="4"]{--pc:#22c55e}
+.rec .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:10px}
+.rec .ttl{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.rec .win{font-size:11px;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.rec .bd{font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:8px}
+.rec .own{font-size:12px;color:#9ca3af;font-style:italic}
+.flist{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.fitem{padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.fitem .ft{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.fitem .fb{font-size:14px;color:#cbd5e1;line-height:1.7}
+.steps{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.step{display:flex;gap:16px;padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px}
+.step .sn{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(200,16,46,0.15);color:#c8102e;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.step .sb{font-size:14px;color:#cbd5e1;line-height:1.6}
+.step .sb strong{color:#fff}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.dl a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dl a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dl .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8102e;margin-bottom:8px}
+.dl .v{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+.dl .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.slides{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.slide{display:flex;gap:18px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.slide .sn{flex:none;font-size:22px;font-weight:800;color:#c8102e;letter-spacing:-.02em;min-width:40px}
+.slide .st{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.slide .sd{font-size:13px;color:#9ca3af;line-height:1.5}
+.footer{border-top:1px solid rgba(255,255,255,0.08);padding:48px 32px;max-width:1280px;margin:80px auto 0;font-size:12px;color:#6b7280}
+.footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.t5{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.nav-inner{padding:14px 20px}.hero{padding:56px 20px 36px}.wrap{padding:0 20px}}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.t5{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="index.html"><span class="dot"></span>FLOUR FRONTIER</a><div class="nav-links"><a class="nav-link " href="index.html">Home</a><a class="nav-link " href="portfolio.html">Portfolio</a><a class="nav-link " href="case-study.html">Case Study</a><a class="nav-link active" href="deck.html">Deck</a><a class="nav-link " href="national.html">National Map</a><a class="nav-link " href="about.html">About</a></div></div></nav>
-<section class="deck-hero">
-<div class="container">
-<div class="deck-eyebrow">Deck</div>
-<h1 class="deck-h1">The story</h1>
-<p class="deck-lead">A 5 slide presentation built for the panel. Title, the ask, methodology, Circana validation, and the four phase recommendation.</p>
-</div>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-brand">Flour<span>Frontier</span></a><div class="nav-links"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="case-study.html">Case Study</a><a href="deck.html" class="active">Deck</a><a href="national.html">National Map</a><a href="about.html">About</a></div></div></nav>
+
+<section class="hero">
+<div class="eyebrow">Deck</div>
+<h1 class="display">Built for the panel</h1>
+<p class="lead">A presentation built around the final recommendation: the ask, the true 5 ranking, the validation view, and the activation roadmap. Simple enough to read in a glance, with the national map snipped in for feasibility.</p>
 </section>
-<section class="downloads">
-<div class="container">
-<div class="downloads-eyebrow">Downloads</div>
-<h2 class="downloads-h2">Get the full set</h2>
-<div class="dl-grid">
-<a class="dl-card" href="Flour_Frontier_Final_Presentation.pptx" download>
-<div class="dl-type">PowerPoint · .pptx</div>
-<div class="dl-title">Final Presentation</div>
-<div class="dl-desc">5 slide deck.
-Title, the ask, methodology, Circana validation, four phase recommendation.</div>
-<span class="dl-btn">Download PPTX</span>
-</a>
-<a class="dl-card" href="Flour_Frontier_Executive_Summary.pdf" download>
-<div class="dl-type">PDF · 1 page</div>
-<div class="dl-title">Executive Summary</div>
-<div class="dl-desc">Printable one pager that hits the headline, ranking, four recommendations, and Circana context.</div>
-<span class="dl-btn">Download PDF</span>
-</a>
-<a class="dl-card" href="Flour_Frontier_Analysis_Workbook.xlsx" download>
-<div class="dl-type">Excel · workbook</div>
-<div class="dl-title">Master Analysis Workbook</div>
-<div class="dl-desc">All the underlying data.
-Ranking methodology, sensitivity lenses, top 50 metros, mill and warehouse distances, distributor performance, phased plan.</div>
-<span class="dl-btn">Download XLSX</span>
-</a>
+<section class="section"><div class="wrap">
+<div class="section-num">Inside the deck</div>
+<h2 class="section-title">How the presentation is structured</h2>
+<div class="slides">
+<div class="slide"><div class="sn">01</div><div><div class="st">Title and framing</div><div class="sd">The ten year question and introduction to the project.</div></div></div>
+<div class="slide"><div class="sn">02</div><div><div class="st">The Ask</div><div class="sd">Why flour looks different when you stop viewing it only by customer or channel, and use the right metrics to see where the gaps really are.</div></div></div>
+<div class="slide"><div class="sn">03</div><div><div class="st">True 5 ranking</div><div class="sd">The six dimension framework and the final order: Houston, DFW, Atlanta, Tampa, Phoenix.</div></div></div>
+<div class="slide"><div class="sn">04</div><div><div class="st">Circana and channel validation</div><div class="sd">South leads at 794M lbs, the West is under pressure, Distributor Label declines, Branded Sack holds. The data confirms the data.</div></div></div>
+<div class="slide"><div class="sn">05</div><div><div class="st">Activation roadmap</div><div class="sd">A national map snip plus four workstreams: rebuild Texas, win the Southeast, build Houston, defend the West and activate Hispanic bakeries.</div></div></div>
 </div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-num">Files</div>
+<h2 class="section-title">Download</h2>
+<div class="dl">
+<a href="Flour_Frontier_Final_Presentation.pptx"><div class="k">PowerPoint</div><div class="v">Final Presentation</div><div class="d">The deck presented to the panel.</div></a>
+<a href="Flour_Frontier_Executive_Summary.pdf"><div class="k">PDF</div><div class="v">Executive Summary</div><div class="d">The reccomendation and overall summary.</div></a>
+<a href="Flour_Frontier_Analysis_Workbook.xlsx"><div class="k">Excel</div><div class="v">Analysis Workbook</div><div class="d">Map inputs, ranking logic, and supporting market data.</div></a>
 </div>
-</section>
-<section class="slides">
-<div class="container">
-<div class="slides-eyebrow">What is in the deck</div>
-<h2 class="slides-h2">5 slides</h2>
-<div class="slide-list">
-<div class="slide-row"><div class="slide-num">01</div><div><div class="slide-title">Title · Who I am</div><div class="slide-desc">Background, the project name, the question.</div></div></div>
-<div class="slide-row"><div class="slide-num">02</div><div><div class="slide-title">The Ask · Why this matters</div><div class="slide-desc">Market shift, business reality, strategic ask from leadership.
-Bounded scope: work within the current network.</div></div></div>
-<div class="slide-row"><div class="slide-num">03</div><div><div class="slide-title">Methodology · True 5 Ranking</div><div class="slide-desc">Six dimension scoring framework, four sensitivity lenses, why Houston is #1.</div></div></div>
-<div class="slide-row"><div class="slide-num">04</div><div><div class="slide-title">Circana Validation</div><div class="slide-desc">Four US Census Regions.
-South is 45% of the market and growing fastest.
-Confirms the ranking.</div></div></div>
-<div class="slide-row"><div class="slide-num">05</div><div><div class="slide-title">Recommendation · Four Phases</div><div class="slide-desc">Fix Texas, win the Southeast, build Houston, defend the West.
-Zero capital investment required.</div></div></div>
-</div>
-</div>
-</section>
-<footer class="footer">
-<div class="footer-grid">
-<div class="footer-brand">
-<div class="footer-brand-title"><span class="dot"></span>FLOUR FRONTIER</div>
-A 10 week internship study analyzing where General Mills NAF FSI should allocate flour milling and warehouse capacity over the next 10 years.
-</div>
-<div class="footer-col"><h4>The Work</h4>
-<a href="portfolio.html">Portfolio</a>
-<a href="case-study.html">Case Study</a>
-<a href="deck.html">Deck</a>
-</div>
-<div class="footer-col"><h4>Maps</h4>
-<a href="national.html">National Map</a>
-</div>
-<div class="footer-col"><h4>About</h4>
-<a href="about.html">About Jake</a>
-<a href="https://www.linkedin.com/in/jakegilstein/" target="_blank">LinkedIn</a>
-<a href="mailto:jmgilstein@gmail.com">Email</a>
-</div>
-</div>
-<div class="footer-bottom">
-<div>© 2026 Jake Gilstein · Built during NAF FSI Sales Internship at General Mills</div>
-<div>St. Augustine, FL · Tampa, FL · Minneapolis WHQ</div>
-</div>
-</footer>
-</body></html>
+</div></section>
+
+<footer class="footer"><div class="row"><div>&copy; 2026 Jake Gilstein &middot; Built during NAF FSI Sales Internship at General Mills</div><div>St. Augustine, FL &middot; Tampa, FL &middot; Minneapolis WHQ</div></div></footer>
+</body>
+</html>

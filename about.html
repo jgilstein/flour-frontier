@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Jake — Flour Frontier</title>
+<title>About Jake &middot; Flour Frontier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-feature-settings:'cv02','cv03','cv04','cv11';line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
 .nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08)}
 .nav-inner{max-width:1280px;margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
 .nav-brand{font-weight:800;font-size:15px;letter-spacing:-0.01em;color:#fff;text-decoration:none}
@@ -18,66 +20,105 @@ html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,Bli
 .nav-links a{color:#9ca3af;text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.15s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05)}
 .nav-links a.active{color:#fff;background:rgba(200,16,46,0.15)}
-.hero{padding:80px 32px 40px;max-width:1280px;margin:0 auto;text-align:left}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.hero{padding:80px 32px 48px;max-width:1280px;margin:0 auto;text-align:left}
 .eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c8102e;padding:6px 14px;border:1px solid rgba(200,16,46,0.3);border-radius:20px;margin-bottom:24px}
-.display{font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:32px}
-.bio{max-width:780px;font-size:18px;line-height:1.7;color:#cbd5e1}
-.bio p{margin-bottom:18px}
-.bio p:last-child{margin-bottom:0}
-.contact{max-width:1280px;margin:60px auto 80px;padding:0 32px}
-.contact-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;margin-bottom:24px}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-.contact-card{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:#fff;transition:all 0.15s}
-.contact-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
-.contact-card .label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;margin-bottom:4px}
-.contact-card .value{font-size:15px;font-weight:600;color:#fff;word-break:break-word}
-.footer{border-top:1px solid rgba(255,255,255,0.08);padding:40px 32px;max-width:1280px;margin:0 auto;font-size:12px;color:#6b7280}
+.display{font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:28px;max-width:960px}
+.lead{max-width:820px;font-size:18px;line-height:1.7;color:#cbd5e1}
+.section{padding:56px 0;border-top:1px solid rgba(255,255,255,0.08)}
+.section-num{font-size:14px;color:#cbd5e1;letter-spacing:.04em;font-weight:700;margin-bottom:16px;text-transform:none}
+.section-title{font-size:clamp(24px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:24px;line-height:1.15}
+.body{font-size:16px;line-height:1.8;color:#cbd5e1;max-width:880px}
+.body p{margin-bottom:18px}
+.body p:last-child{margin-bottom:0}
+.body strong{color:#fff;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 8px}
+.stat{padding:28px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px}
+.stat .n{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1}
+.stat .n span{color:#c8102e}
+.stat .l{margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9ca3af}
+.t5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+.t5 .card{padding:24px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;position:relative;overflow:hidden}
+.t5 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc)}
+.t5 .card[data-r="1"]{--rc:#c8102e}.t5 .card[data-r="2"]{--rc:#f97316}.t5 .card[data-r="3"]{--rc:#eab308}.t5 .card[data-r="4"]{--rc:#22c55e}.t5 .card[data-r="5"]{--rc:#3b82f6}
+.t5 .r{font-size:12px;font-weight:700;color:var(--rc);letter-spacing:.05em;margin-bottom:8px}
+.t5 .m{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.t5 .c{font-size:12px;color:#6b7280;margin-bottom:8px;font-weight:600}
+.t5 .tag{font-size:12px;color:#9ca3af;line-height:1.5}
+.dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.dir a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dir a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dir .h{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.dir .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.callout{padding:24px 28px;background:rgba(200,16,46,0.06);border-left:4px solid #c8102e;border-radius:8px;margin:28px 0;font-size:15px;color:#e5e7eb;line-height:1.7}
+.callout strong{color:#fff}
+.note{padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:24px 0;font-size:14px;color:#9ca3af;line-height:1.6;font-style:italic;max-width:880px}
+.matrix{margin-top:24px;overflow-x:auto;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.matrix table{width:100%;border-collapse:collapse;font-size:13px}
+.matrix th{background:rgba(255,255,255,0.03);text-align:left;padding:12px 14px;font-weight:600;color:#9ca3af;text-transform:uppercase;font-size:11px;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,0.08)}
+.matrix td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.05);color:#cbd5e1}
+.matrix tr:last-child td{border-bottom:none}
+.matrix tr.composite td{background:rgba(200,16,46,0.07);color:#fff;font-weight:700}
+.matrix tr.composite td:first-child{color:#c8102e}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.lens{padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.lens .name{font-size:11px;color:#c8102e;letter-spacing:.12em;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.lens .q{font-size:14px;color:#fff;font-weight:600;margin-bottom:8px}
+.lens .a{font-size:13px;color:#9ca3af;line-height:1.6}
+.recs{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.rec{padding:24px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;border-left:4px solid var(--pc,#c8102e)}
+.rec[data-n="1"]{--pc:#c8102e}.rec[data-n="2"]{--pc:#f97316}.rec[data-n="3"]{--pc:#eab308}.rec[data-n="4"]{--pc:#22c55e}
+.rec .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:10px}
+.rec .ttl{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.rec .win{font-size:11px;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.rec .bd{font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:8px}
+.rec .own{font-size:12px;color:#9ca3af;font-style:italic}
+.flist{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.fitem{padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.fitem .ft{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.fitem .fb{font-size:14px;color:#cbd5e1;line-height:1.7}
+.steps{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.step{display:flex;gap:16px;padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px}
+.step .sn{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(200,16,46,0.15);color:#c8102e;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.step .sb{font-size:14px;color:#cbd5e1;line-height:1.6}
+.step .sb strong{color:#fff}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.dl a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dl a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dl .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8102e;margin-bottom:8px}
+.dl .v{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+.dl .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.slides{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.slide{display:flex;gap:18px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.slide .sn{flex:none;font-size:22px;font-weight:800;color:#c8102e;letter-spacing:-.02em;min-width:40px}
+.slide .st{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.slide .sd{font-size:13px;color:#9ca3af;line-height:1.5}
+.footer{border-top:1px solid rgba(255,255,255,0.08);padding:48px 32px;max-width:1280px;margin:80px auto 0;font-size:12px;color:#6b7280}
 .footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.t5{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.nav-inner{padding:14px 20px}.hero{padding:56px 20px 36px}.wrap{padding:0 20px}}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.t5{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Flour<span>Frontier</span></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="case-study.html">Case Study</a>
-      <a href="deck.html">Deck</a>      <a href="national.html">National Map</a>
-      <a href="about.html" class="active">About</a>
-    </div>
-  </div>
-</nav>
-<section class="hero">
-  <div class="eyebrow">Who I Am</div>
-  <h1 class="display">About Jake</h1>
-  <div class="bio">
-    <p>I am Jake Gilstein, a North America Foodservice Sales Intern at General Mills in the Summer 2026 cohort. I am a senior at the University of South Florida graduating December 2026 with a B.S. in Business Management and a Minor in Marketing. Born in Brooklyn, NY. Raised in Philadelphia, PA. Now splitting time between St. Augustine, FL and Tampa, FL.</p>
-    <p>My background blends two angles that turned out to be directly useful at General Mills. I spent the last 8 to 9 months at Scotlynn as a Logistics Account Manager Associate, brokering freight partnerships for major CPG clients, which gave me a working knowledge of how product physically gets from a plant to a customer. The summer before that I was a Strategic Sales Intern at The H.T. Hackney Co. in Tampa, doing 60 store visits per week analyzing buyer behavior and refining route-to-market strategy. The 3PL logistics work and the strategic CPG sales work both showed up directly in the Flour Frontier analysis.</p>
-  </div>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-brand">Flour<span>Frontier</span></a><div class="nav-links"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="case-study.html">Case Study</a><a href="deck.html">Deck</a><a href="national.html">National Map</a><a href="about.html" class="active">About</a></div></div></nav>
+
+<section class="hero" style="padding:80px 32px 40px">
+<div class="eyebrow" style="font-size:15px;letter-spacing:0.18em;padding:7px 16px;margin-bottom:24px">Who I Am</div>
+<h1 class="display" style="font-size:clamp(30px,4.2vw,48px);margin-bottom:32px">About Jake</h1>
+<div class="body" style="max-width:780px;font-size:18px;color:#cbd5e1">
+<p>I am Jake Gilstein, a North America Foodservice Sales Intern at General Mills in the Summer 2026 cohort. I am a senior at the University of South Florida graduating December 2026 with a B.S. in Business Management and a Minor in Marketing. Born in Brooklyn, NY. Raised in Philadelphia, PA. Now splitting time between St. Augustine, FL and Tampa, FL. In my free time, I enjoy weightlifting, boxing, running, and listening to '70s-90's r&amp;b &amp; disco. I can almost always be spotted wearing one of three things: a quarter zip, a Knicks jersey or loafers.</p>
+<p>My background blends two angles that turned out to be directly useful at General Mills. I spent the last 8 to 9 months at Scotlynn as a Logistics Account Manager Associate, brokering freight partnerships for major CPG clients, which gave me a working knowledge of how product physically gets from a plant to a customer. The summer before that I was a Strategic Sales Intern at The H.T. Hackney Co. in Tampa, doing 60 store visits per week analyzing buyer behavior and refining route-to-market strategy. The 3PL logistics work and the strategic CPG sales work both showed up directly in the Flour Frontier analysis.</p>
+</div>
 </section>
-<section class="contact">
-  <div class="contact-eyebrow">Get In Touch</div>
-  <div class="contact-grid">
-    <a href="mailto:jmgilstein@gmail.com" class="contact-card">
-      <div class="label">Email</div>
-      <div class="value">jmgilstein@gmail.com</div>
-    </a>
-    <a href="tel:+12678978687" class="contact-card">
-      <div class="label">Phone</div>
-      <div class="value">(267) 897-8687</div>
-    </a>
-    <a href="https://www.linkedin.com/in/jakegilstein/" target="_blank" rel="noopener" class="contact-card">
-      <div class="label">LinkedIn</div>
-      <div class="value">linkedin.com/in/jakegilstein</div>
-    </a>
-  </div>
-</section>
-<footer class="footer">
-  <div class="row">
-    <div>© 2026 Jake Gilstein · Built during NAF FSI Sales Internship at General Mills</div>
-    <div>St. Augustine, FL · Tampa, FL · Minneapolis WHQ</div>
-  </div>
-</footer>
+<section class="section" style="border-top:1px solid rgba(255,255,255,0.08)"><div class="wrap">
+<div class="section-num" style="font-size:16px;color:#cbd5e1;letter-spacing:.08em;text-transform:uppercase;padding-left:8px">Get In Touch</div>
+<div class="dl" style="margin-top:24px">
+<a href="mailto:jmgilstein@gmail.com"><div class="k">Email</div><div class="v">jmgilstein@gmail.com</div></a>
+<a href="tel:+12678978687"><div class="k">Phone</div><div class="v">(267) 897-8687</div></a>
+<a href="https://www.linkedin.com/in/jakegilstein/" target="_blank" rel="noopener"><div class="k">LinkedIn</div><div class="v">linkedin.com/in/jakegilstein</div></a>
+</div>
+</div></section>
+
+<footer class="footer"><div class="row"><div>&copy; 2026 Jake Gilstein &middot; Built during NAF FSI Sales Internship at General Mills</div><div>St. Augustine, FL &middot; Tampa, FL &middot; Minneapolis WHQ</div></div></footer>
 </body>
 </html>

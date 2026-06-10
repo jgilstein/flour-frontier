@@ -2,218 +2,208 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Case Study · Flour Frontier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study &middot; Flour Frontier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e13;color:#e5e7eb;line-height:1.6;font-feature-settings:'cv02','cv03','cv04','cv11'}
+html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-feature-settings:'cv02','cv03','cv04','cv11';line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 32px}
-.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1f2937}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1400px;margin:0 auto}
-.nav-brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#fff;display:flex;align-items:center;gap:10px}
-.nav-brand .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
-.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.nav-link{padding:8px 14px;font-size:13px;color:#9ca3af;border-radius:6px;transition:all .15s}
-.nav-link:hover{color:#fff;background:#1f2937}
-.nav-link.active{color:#fff;background:#1f2937}
-.footer{margin-top:120px;padding:60px 32px 40px;border-top:1px solid #1f2937;background:#070a0e}
-.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
-.footer-brand{font-size:14px;color:#9ca3af;line-height:1.7}
-.footer-brand-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.footer-brand-title .dot{width:8px;height:8px;background:#c8102e;border-radius:50%}
-.footer-col h4{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;font-weight:600}
-.footer-col a{display:block;font-size:13px;color:#9ca3af;padding:5px 0;transition:color .15s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{max-width:1200px;margin:48px auto 0;padding-top:24px;border-top:1px solid #1f2937;font-size:12px;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.cs-hero{padding:80px 0 60px}
-.cs-eyebrow{font-size:12px;letter-spacing:.15em;color:#c8102e;font-weight:600;margin-bottom:16px;text-transform:uppercase}
-.cs-h1{font-size:50px;line-height:1.1;font-weight:800;letter-spacing:-.025em;color:#fff;margin-bottom:24px;max-width:900px}
-.cs-lead{font-size:17px;line-height:1.7;color:#9ca3af;max-width:760px}
-.section{padding:60px 0;border-top:1px solid #1f2937}
-.section-num{font-size:10px;color:#6b7280;letter-spacing:.18em;font-weight:700;margin-bottom:14px;text-transform:uppercase}
-.section-title{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:24px;line-height:1.2}
-.body{font-size:16px;line-height:1.8;color:#d1d5db;max-width:880px}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,19,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.nav-brand{font-weight:800;font-size:15px;letter-spacing:-0.01em;color:#fff;text-decoration:none}
+.nav-brand span{color:#c8102e}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:#9ca3af;text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-links a.active{color:#fff;background:rgba(200,16,46,0.15)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.hero{padding:80px 32px 48px;max-width:1280px;margin:0 auto;text-align:left}
+.eyebrow{display:inline-block;font-size:15px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#c8102e;padding:8px 16px;border:1px solid rgba(200,16,46,0.3);border-radius:20px;margin-bottom:20px}
+.display{font-size:clamp(30px,4.4vw,50px);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:28px;max-width:1200px}
+.lead{max-width:820px;font-size:18px;line-height:1.7;color:#cbd5e1}
+.section{padding:56px 0;border-top:1px solid rgba(255,255,255,0.08)}
+.section-num{font-size:15px;color:#cbd5e1;letter-spacing:.02em;font-weight:700;margin-bottom:16px;text-transform:none}
+.section-title{font-size:clamp(22px,2.6vw,28px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:24px;line-height:1.15}
+.body{font-size:16px;line-height:1.8;color:#cbd5e1;max-width:880px}
 .body p{margin-bottom:18px}
 .body p:last-child{margin-bottom:0}
 .body strong{color:#fff;font-weight:600}
-.callout{padding:24px 28px;background:#0f1722;border-left:4px solid #c8102e;border-radius:8px;margin:28px 0;font-size:15px;color:#e5e7eb;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 8px}
+.stat{padding:28px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px}
+.stat .n{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1}
+.stat .n span{color:#c8102e}
+.stat .l{margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9ca3af}
+.t5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+.t5 .card{padding:24px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;position:relative;overflow:hidden}
+.t5 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc)}
+.t5 .card[data-r="1"]{--rc:#c8102e}.t5 .card[data-r="2"]{--rc:#f97316}.t5 .card[data-r="3"]{--rc:#eab308}.t5 .card[data-r="4"]{--rc:#22c55e}.t5 .card[data-r="5"]{--rc:#3b82f6}
+.t5 .r{font-size:12px;font-weight:700;color:var(--rc);letter-spacing:.05em;margin-bottom:8px}
+.t5 .m{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.t5 .c{font-size:12px;color:#6b7280;margin-bottom:8px;font-weight:600}
+.t5 .tag{font-size:12px;color:#9ca3af;line-height:1.5}
+.dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.dir a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dir a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dir .h{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.dir .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.callout{padding:24px 28px;background:rgba(200,16,46,0.06);border-left:4px solid #c8102e;border-radius:8px;margin:28px 0;font-size:15px;color:#e5e7eb;line-height:1.7}
 .callout strong{color:#fff}
-.matrix{margin-top:28px;overflow-x:auto;border:1px solid #1f2937;border-radius:10px}
+.note{padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:24px 0;font-size:14px;color:#9ca3af;line-height:1.6;font-style:italic;max-width:880px}
+.matrix{margin-top:24px;overflow-x:auto;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
 .matrix table{width:100%;border-collapse:collapse;font-size:13px}
-.matrix th{background:#0f1722;text-align:left;padding:12px 14px;font-weight:600;color:#9ca3af;text-transform:uppercase;font-size:11px;letter-spacing:.05em;border-bottom:1px solid #1f2937}
-.matrix td{padding:11px 14px;border-bottom:1px solid #161e2c;color:#d1d5db}
+.matrix th{background:rgba(255,255,255,0.03);text-align:left;padding:12px 14px;font-weight:600;color:#9ca3af;text-transform:uppercase;font-size:11px;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,0.08)}
+.matrix td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.05);color:#cbd5e1}
 .matrix tr:last-child td{border-bottom:none}
-.matrix tr.composite td{background:#0a1018;color:#fff;font-weight:600}
+.matrix tr.composite td{background:rgba(200,16,46,0.07);color:#fff;font-weight:700}
 .matrix tr.composite td:first-child{color:#c8102e}
-.rank-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px}
-.rank-card{padding:24px 18px;background:#0f1722;border:1px solid #1f2937;border-radius:10px;position:relative;overflow:hidden}
-.rank-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc)}
-.rank-card[data-r="1"]{--rc:#c8102e}
-.rank-card[data-r="2"]{--rc:#f97316}
-.rank-card[data-r="3"]{--rc:#eab308}
-.rank-card[data-r="4"]{--rc:#22c55e}
-.rank-card[data-r="5"]{--rc:#3b82f6}
-.rank-num{font-size:13px;font-weight:700;color:var(--rc);letter-spacing:.05em;margin-bottom:10px}
-.rank-metro{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
-.rank-comp{font-size:13px;color:#9ca3af;margin-bottom:8px}
-.rank-tag{font-size:12px;color:#9ca3af;line-height:1.5}
-.lens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
-.lens{padding:24px;background:#0f1722;border:1px solid #1f2937;border-radius:10px}
-.lens-name{font-size:11px;color:#c8102e;letter-spacing:.12em;font-weight:700;margin-bottom:8px;text-transform:uppercase}
-.lens-q{font-size:14px;color:#fff;font-weight:600;margin-bottom:8px}
-.lens-a{font-size:13px;color:#9ca3af;line-height:1.6}
-.rec-list{display:flex;flex-direction:column;gap:14px;margin-top:24px}
-.rec{padding:24px 28px;background:#0f1722;border:1px solid #1f2937;border-radius:12px;border-left:4px solid var(--pc,#c8102e)}
-.rec[data-n="1"]{--pc:#c8102e}
-.rec[data-n="2"]{--pc:#f97316}
-.rec[data-n="3"]{--pc:#eab308}
-.rec[data-n="4"]{--pc:#22c55e}
-.rec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:10px}
-.rec-title{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em}
-.rec-window{font-size:11px;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.rec-body{font-size:14px;color:#d1d5db;line-height:1.7;margin-bottom:8px}
-.rec-owner{font-size:12px;color:#9ca3af;font-style:italic}
-@media(max-width:900px){.cs-h1{font-size:32px}.section-title{font-size:24px}.rank-grid{grid-template-columns:repeat(2,1fr)}.lens-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.nav-inner{padding:14px 20px}.container{padding:0 20px}.nav-link{padding:6px 10px;font-size:12px}}
-@media(max-width:600px){.footer-grid{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.lens{padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.lens .name{font-size:11px;color:#c8102e;letter-spacing:.12em;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.lens .q{font-size:14px;color:#fff;font-weight:600;margin-bottom:8px}
+.lens .a{font-size:13px;color:#9ca3af;line-height:1.6}
+.recs{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.rec{padding:24px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;border-left:4px solid var(--pc,#c8102e)}
+.rec[data-n="1"]{--pc:#c8102e}.rec[data-n="2"]{--pc:#f97316}.rec[data-n="3"]{--pc:#eab308}.rec[data-n="4"]{--pc:#22c55e}
+.rec .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:10px}
+.rec .ttl{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.rec .win{font-size:11px;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.rec .bd{font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:8px}
+.rec .own{font-size:12px;color:#9ca3af;font-style:italic}
+.flist{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.fitem{padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.fitem .ft{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.fitem .fb{font-size:14px;color:#cbd5e1;line-height:1.7}
+.steps{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.step{display:flex;gap:16px;padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px}
+.step .sn{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(200,16,46,0.15);color:#c8102e;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.step .sb{font-size:14px;color:#cbd5e1;line-height:1.6}
+.step .sb strong{color:#fff}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.dl a{display:block;padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .15s}
+.dl a:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,16,46,0.4);transform:translateY(-2px)}
+.dl .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8102e;margin-bottom:8px}
+.dl .v{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+.dl .d{font-size:13px;color:#9ca3af;line-height:1.5}
+.slides{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.slide{display:flex;gap:18px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.slide .sn{flex:none;font-size:22px;font-weight:800;color:#c8102e;letter-spacing:-.02em;min-width:40px}
+.slide .st{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.slide .sd{font-size:13px;color:#9ca3af;line-height:1.5}
+.footer{border-top:1px solid rgba(255,255,255,0.08);padding:48px 32px;max-width:1280px;margin:80px auto 0;font-size:12px;color:#6b7280}
+.footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.t5{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.nav-inner{padding:14px 20px}.hero{padding:56px 20px 36px}.wrap{padding:0 20px}}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.t5{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="index.html"><span class="dot"></span>FLOUR FRONTIER</a><div class="nav-links"><a class="nav-link " href="index.html">Home</a><a class="nav-link " href="portfolio.html">Portfolio</a><a class="nav-link active" href="case-study.html">Case Study</a><a class="nav-link " href="deck.html">Deck</a><a class="nav-link " href="national.html">National Map</a><a class="nav-link " href="about.html">About</a></div></div></nav>
-<section class="cs-hero">
-<div class="container">
-<div class="cs-eyebrow">Case Study</div>
-<h1 class="cs-h1">Where should NAF FSI focus flour over the next ten years?</h1>
-<p class="cs-lead">A structured analytical write up of the Flour Frontier project. The question, the data, the six dimension scoring framework, the four sensitivity lenses, the final ranking, the four phase recommendation, and what comes next.</p>
-</div>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-brand">Flour<span>Frontier</span></a><div class="nav-links"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="case-study.html" class="active">Case Study</a><a href="deck.html">Deck</a><a href="national.html">National Map</a><a href="about.html">About</a></div></div></nav>
+<section class="hero">
+<div class="eyebrow">Case Study</div>
+<h1 class="display">Where flour focus belongs</h1>
+<p class="lead">The full analysis behind the recommendation: the question, the data, the scoring, the stress tests, and a plan built to run inside the network we already have.</p>
 </section>
-<section class="section"><div class="container">
-<div class="section-num">Section 01 · The Question</div>
-<h2 class="section-title">What James actually asked</h2>
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Question</div>
+<h2 class="section-title">What was actually asked</h2>
 <div class="body">
-<p>Day one of the internship, James Mueting framed the brief in plain terms. Look ten years out. Tell us where NAF FSI flour growth is going to come from. Back the recommendation with data. Operate within the current five mill, five warehouse network. No new mill capex.</p>
-<p>The constraint is the strategy. Knowing that a new mill was off the table forced the analysis toward the moves that are actually available: distributor partnership deepening, warehouse network optimization, toll-milling feasibility, and Account Executive playbook replication.</p>
+<p>Look ten years out and say where flour growth should come from, using the current network and no new mill. That last part was the whole strategy. With a new mill off the table, the real choices became the ones we can actually make now: which distributors to deepen, where a warehouse would help, and which selling playbooks to copy from one market into the next.</p>
 </div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 02 · The Approach</div>
-<h2 class="section-title">Six analytical phases</h2>
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Approach</div>
+<h2 class="section-title">Five steps from data to answer</h2>
 <div class="body">
-<p><strong>Foundation.</strong> Top 50 US metros pulled from Circana, Tableau, U.S. census population and projection reports and more. Joined to GM's current mill and warehouse footprint with pairwise distances to surface the supply chain gaps.</p>
-<p><strong>Internal performance.</strong> GMI Region Full and Account Full data from Tableau, segmented by Account Executive, distributor, metro, and channel. Year over year EQC change at the customer level.</p>
-<p><strong>External validation.</strong> Circana TTM data at the US Census Region level layered on top, plus the Feb 2026 Flour by DMA cut to localize the picture.</p>
-<p><strong>Synthesis.</strong> Six dimension scoring framework built and tested. Composite produces the True 5 ranking. Four sensitivity lenses applied as a stress test.</p>
-<p><strong>Field pressure test.</strong> Sat down with the AEs who actually own the territories. Their context turned numbers into stories and changed the framing in real ways.</p>
-<p><strong>Final synthesis.</strong> Four phase recommendation with named owners, sequenced by urgency, all working within the current network.</p>
+<p>I sized the fifty largest metros against our mills and warehouses, read our own account-level volume and value, scored each market on six factors, and then put the ranking in front of the AEs who own these territories. Their context turned numbers into reasons and changed the framing in real ways. The final recommendation came out of both.</p>
 </div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 03 · The Ranking</div>
-<h2 class="section-title">True 5 Methodology</h2>
-<div class="body">
-<p>Each metro scored 1 to 5 within the True 5 group on six dimensions. Weights reflect a ten year strategic lens.</p>
-</div>
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Ranking</div>
+<h2 class="section-title">How the five markets scored</h2>
+<div class="body"><p>Each market was scored one to five on six factors, weighted for a ten-year view. The order held up under pressure, which is what mattered most.</p></div>
 <div class="matrix"><table>
-<thead><tr><th>Dimension</th><th>Wt</th><th>HOU</th><th>DFW</th><th>ATL</th><th>TPA</th><th>PHX</th><th>Winner</th></tr></thead>
+<thead><tr><th>Factor</th><th>Weight</th><th>Houston</th><th>Dallas</th><th>Atlanta</th><th>Tampa</th><th>Phoenix</th><th>Strongest</th></tr></thead>
 <tbody>
-<tr><td>Market Opportunity (TAM gap)</td><td>30%</td><td>5</td><td>4</td><td>3</td><td>3</td><td>1</td><td>HOU</td></tr>
-<tr><td>Market Health (YoY)</td><td>15%</td><td>4</td><td>5</td><td>4</td><td>5</td><td>1</td><td>DFW / TPA</td></tr>
-<tr><td>Future Growth 10yr</td><td>15%</td><td>3</td><td>4</td><td>2</td><td>3</td><td>5</td><td>PHX</td></tr>
-<tr><td>HQ Inflow</td><td>10%</td><td>4</td><td>5</td><td>5</td><td>3</td><td>3</td><td>DFW / ATL</td></tr>
-<tr><td>Trajectory Proof</td><td>20%</td><td>5</td><td>2</td><td>5</td><td>4</td><td>4</td><td>HOU / ATL</td></tr>
-<tr><td>Transport Quality</td><td>10%</td><td>4</td><td>5</td><td>2</td><td>1</td><td>5</td><td>DFW / PHX</td></tr>
-<tr class="composite"><td>COMPOSITE</td><td>100%</td><td>4.35</td><td>3.95</td><td>3.50</td><td>3.30</td><td>2.80</td><td>HOU #1</td></tr>
+<tr><td>Market Opportunity</td><td>30%</td><td>5</td><td>4</td><td>3</td><td>3</td><td>1</td><td>Houston</td></tr>
+<tr><td>Market Health (year over year)</td><td>15%</td><td>4</td><td>5</td><td>4</td><td>5</td><td>1</td><td>Dallas / Tampa</td></tr>
+<tr><td>Ten-Year Growth</td><td>15%</td><td>3</td><td>4</td><td>2</td><td>3</td><td>5</td><td>Phoenix</td></tr>
+<tr><td>Corporate Inflow</td><td>10%</td><td>4</td><td>5</td><td>5</td><td>3</td><td>3</td><td>Dallas / Atlanta</td></tr>
+<tr><td>Proven Momentum</td><td>20%</td><td>5</td><td>2</td><td>5</td><td>4</td><td>4</td><td>Houston / Atlanta</td></tr>
+<tr><td>Transport &amp; Freight</td><td>10%</td><td>4</td><td>5</td><td>2</td><td>1</td><td>5</td><td>Dallas / Phoenix</td></tr>
+<tr class="composite"><td>Composite</td><td>100%</td><td>4.35</td><td>3.95</td><td>3.50</td><td>3.30</td><td>2.80</td><td>Houston</td></tr>
 </tbody>
 </table></div>
-<div class="rank-grid">
-<div class="rank-card" data-r="1"><div class="rank-num">RANK 1</div><div class="rank-metro">Houston</div><div class="rank-comp">Composite 4.35</div><div class="rank-tag">Biggest TAM gap in country</div></div>
-<div class="rank-card" data-r="2"><div class="rank-num">RANK 2</div><div class="rank-metro">Dallas-Ft Worth</div><div class="rank-comp">Composite 3.95</div><div class="rank-tag">Fix Texas execution first</div></div>
-<div class="rank-card" data-r="3"><div class="rank-num">RANK 3</div><div class="rank-metro">Atlanta</div><div class="rank-comp">Composite 3.50</div><div class="rank-tag">GFS already winning, double down</div></div>
-<div class="rank-card" data-r="4"><div class="rank-num">RANK 4</div><div class="rank-metro">Tampa-St Pete</div><div class="rank-comp">Composite 3.30</div><div class="rank-tag">Fastest growth, build long-term</div></div>
-<div class="rank-card" data-r="5"><div class="rank-num">RANK 5</div><div class="rank-metro">Phoenix</div><div class="rank-comp">Composite 2.80</div><div class="rank-tag">Defense play in losing region</div></div>
+<div class="t5" style="margin-top:18px">
+<div class="card" data-r="1"><div class="r">FIRST</div><div class="m">Houston</div><div class="c">4.35</div><div class="tag">The largest untapped market in the country.</div></div>
+<div class="card" data-r="2"><div class="r">SECOND</div><div class="m">Dallas&ndash;Fort Worth</div><div class="c">3.95</div><div class="tag">Rebuild Texas around the market.</div></div>
+<div class="card" data-r="3"><div class="r">THIRD</div><div class="m">Atlanta</div><div class="c">3.50</div><div class="tag">A warehouse changes everything here.</div></div>
+<div class="card" data-r="4"><div class="r">FOURTH</div><div class="m">Tampa&ndash;St. Pete</div><div class="c">3.30</div><div class="tag">Florida&rsquo;s fastest-growing demand.</div></div>
+<div class="card" data-r="5"><div class="r">FIFTH</div><div class="m">Phoenix</div><div class="c">2.80</div><div class="tag">Holding ground in a tough region.</div></div>
 </div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 04 · Sensitivity Lenses</div>
-<h2 class="section-title">Pressure testing the ranking</h2>
-<div class="body"><p>The ranking holds across four different weighting frameworks. Houston wins under every one because the TAM gap is too large to ignore.</p></div>
-<div class="lens-grid">
-<div class="lens"><div class="lens-name">Lens A · Default Strategic</div><div class="lens-q">10 year balanced view</div><div class="lens-a">Top 2: <strong>Houston · DFW</strong>. The default weighted composite.</div></div>
-<div class="lens"><div class="lens-name">Lens B · Pure Opportunity</div><div class="lens-q">Biggest TAM gap?</div><div class="lens-a">Top 2: <strong>Houston · Atlanta</strong>. If the only thing that mattered was untapped market.</div></div>
-<div class="lens"><div class="lens-name">Lens C · Urgency to Fix</div><div class="lens-q">Biggest current bleed?</div><div class="lens-a">Top 2: <strong>DFW · Tampa</strong>. If you only fixed the most acute problems.</div></div>
-<div class="lens"><div class="lens-name">Lens D · Trajectory Wins</div><div class="lens-q">Where is momentum?</div><div class="lens-a">Top 2: <strong>Atlanta · Tampa</strong>. GFS +122.5% YoY and GMI +13.9% YoY respectively.</div></div>
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Stress Test</div>
+<h2 class="section-title">Does the order hold up?</h2>
+<div class="body"><p>I reweighted the scoring four different ways. Houston stays on top under every one, because the size of its opening is simply larger than the rest.</p></div>
+<div class="grid2">
+<div class="lens"><div class="name">A balanced ten-year view</div><div class="q">Top two: Houston and Dallas</div><div class="a">The default weighting, built for the long horizon.</div></div>
+<div class="lens"><div class="name">If only the size of the opening mattered</div><div class="q">Top two: Houston and Atlanta</div><div class="a">Pure untapped market, nothing else.</div></div>
+<div class="lens"><div class="name">If we only fixed what is slipping today</div><div class="q">Top two: Dallas and Tampa</div><div class="a">Weighting toward the most urgent declines.</div></div>
+<div class="lens"><div class="name">If we followed the momentum</div><div class="q">Top two: Atlanta and Tampa</div><div class="a">Where growth is already running fastest.</div></div>
 </div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 05 · The Network Reality</div>
-<h2 class="section-title">An Atlanta warehouse changes the equation</h2>
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Network Reality</div>
+<h2 class="section-title">Why an Atlanta warehouse keeps coming up</h2>
 <div class="body">
-<p>Every Phase 2 recommendation in this study is anchored on one specific network reality: GM is most likely going to open a warehouse in Atlanta. That single move is the highest leverage available without any new mill capex.</p>
-<p>The Southeast corridor (Atlanta, Charlotte, Nashville, Tampa) currently has no GM warehouse and no nearby mill. An Atlanta warehouse compresses the cost to serve across all four of those metros simultaneously. It also makes deepening the GFS Shepherdsville relationship operationally easier.</p>
+<p>Most of this plan runs inside what we already operate: five mills and six warehouses. The Southeast is the exception. Atlanta, Tampa, Charlotte, and Nashville sit in the strongest region in the data with no warehouse close enough to serve them well, and every Southeast AE pointed to the same fix. When product sits closer, the freight gap that keeps us from competing mostly disappears. Orlando already proved it, so well that it is now bumping against its own capacity.</p>
 </div>
-<div class="callout"><strong>Bounded scope, in writing.</strong> A new mill would cost roughly $100M and is not in scope. Confirmed in conversation with Cathy Meyer, Director NAF Ingredients. All four recommendations are built to work within the current five mill, five warehouse footprint, with the proposed Atlanta warehouse as the one additive network investment.</div>
+<div class="callout"><strong>An honest note on cost.</strong> A new mill would run about $100 million and is off the table, confirmed early with Cathy Meyer. An Atlanta warehouse is a different and much smaller question, but it is not free. It should be studied on its own cost-to-serve case rather than waved through. It is simply the one network investment the evidence keeps pointing toward.</div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 06 · The Recommendation</div>
-<h2 class="section-title">Four phases, zero new mill capex</h2>
-<div class="rec-list">
+
+<section class="section"><div class="wrap">
+<div class="section-num">The Recommendation</div>
+<h2 class="section-title">Four moves, built for the network we have</h2>
+<div class="recs">
 <div class="rec" data-n="1">
-<div class="rec-head"><div class="rec-title">Phase 1 · Fix Texas Execution</div><div class="rec-window">Next 90 Days · FY27 Q1</div></div>
-<div class="rec-body">Sysco Central TX (-38% YoY) and Sysco North TX (-36% YoY) are top 5 customer losses in the entire NAF book and they sit in our #2 ranked metro. The DFW market itself is growing +5.3% YoY, so these are execution gaps not market shifts. Launch a 3 week root cause sprint to categorize the loss (competitive, distributor consolidation, or program execution) and define remediation.</div>
-<div class="rec-owner">Owner: Gus Patrick (Houston) + Melissa Magsalin (DFW) · James Mueting</div>
+<div class="head"><div class="ttl">Rebuild Texas around the market</div><div class="win">Houston &amp; Dallas</div></div>
+<div class="bd">The Sysco distributor-label business went to Ardent last fall and is not realistically winnable in the near term. But Dallas is still growing about 5.3% a year and our branded flour is holding across Texas distributors. The work is to protect that momentum, grow the independent and Hispanic bakery base, and stay close enough to step back in when Sysco wants a second source again.</div>
+<div class="own">Owners: Gus Patrick, Melissa Magsalin</div>
 </div>
 <div class="rec" data-n="2">
-<div class="rec-head"><div class="rec-title">Phase 2 · Win the Southeast Corridor</div><div class="rec-window">3 to 12 Months · FY27 Q1 - Q4</div></div>
-<div class="rec-body">Atlanta, Tampa, Charlotte, and Nashville cluster in the strongest region per Circana and contain our biggest cold spot. Three concurrent actions: (a) evaluate the proposed Atlanta warehouse cost to serve case (biggest network leverage available, no mill capex), (b) deepen the GFS Shepherdsville partnership where GMI is already up +122.5% YoY under Dean Psyhogios, (c) replicate Josh Cohen's Nashville playbook across Josh Cohen and Jeffrey Santiago territories.</div>
-<div class="rec-owner">Owner: Josh Cohen + Dean Psyhogios (GFS-KY hub) + Jeffrey Santiago · GM Supply Chain + Melissa Tiemeyer</div>
+<div class="head"><div class="ttl">Win the Southeast</div><div class="win">Atlanta, Tampa, Charlotte, Nashville</div></div>
+<div class="bd">This is the strongest region in the data and the one every Southeast AE points to. The biggest single unlock is an Atlanta warehouse, which would ease freight across all four markets at once and make the Gordon Food Service relationship easier to grow, building on the momentum already running through Shepherdsville.</div>
+<div class="own">Owners: Josh Cohen, Dean Psyhogios, Jeffrey Santiago</div>
 </div>
 <div class="rec" data-n="3">
-<div class="rec-head"><div class="rec-title">Phase 3 · Build the Houston Opportunity Case</div><div class="rec-window">6 to 18 Months · FY27 Q2 - Q4</div></div>
-<div class="rec-body">Houston is a 60.3M lb DMA where GM holds GMI Index 49, less than half national parity. Reaching parity unlocks roughly 8 to 9 million pounds annually from a single metro. Scope a Houston specific go-to-market plan with Gus Patrick, focused on the independent operator base and the petrochemical workforce concentration.</div>
-<div class="rec-owner">Owner: Gus Patrick · James Mueting</div>
+<div class="head"><div class="ttl">Build the Houston case</div><div class="win">Houston</div></div>
+<div class="bd">Houston is a 60.3 million pound market where we hold less than half our national share. Closing even part of that gap is worth roughly 9 million pounds a year from a single city. Scope a focused plan with Gus Patrick aimed at the independent operator base.</div>
+<div class="own">Owner: Gus Patrick</div>
 </div>
 <div class="rec" data-n="4">
-<div class="rec-head"><div class="rec-title">Phase 4 · Defend the West Without New Capex</div><div class="rec-window">12 to 24 Months · FY27 Q4 - FY28</div></div>
-<div class="rec-body">Circana shows West GMI losing 1.1 percentage points of share and down 2.5% in volume. Phoenix is the only True 5 metro with positive year over year performance and the cleanest transport story (370 miles direct truck from Vernon). Double down on the Shamrock Foods relationship, formalize the West Zone Playbook so Shotsie Wilson, Yoel Sharabi, and Nancy Muller's best practices are reproducible, and prevent further share erosion before evaluating any Vernon area capacity decisions.</div>
-<div class="rec-owner">Owner: Shotsie Wilson + Yoel Sharabi + Nancy Muller · James Mueting</div>
+<div class="head"><div class="ttl">Grow the West where it pays</div><div class="win">Phoenix, Pacific Northwest, SoCal</div></div>
+<div class="bd">The West is losing share on freight, but the clearest growth looks more relationship-led than broad-based, especially in Oregon, Washington, and the mid-sized cities between Sacramento and Portland. Hold Phoenix as the anchor, and recognize that some West Coast opportunities will also require a more intentional specialty and clean-label flour position for independent ethnic food marts, bakeries, and other specialty operators.</div>
+<div class="own">Owners: Yoel Sharabi, Nancy Muller, Shotsie Wilson</div>
 </div>
 </div>
 </div></section>
-<section class="section"><div class="container">
-<div class="section-num">Section 07 · What Comes Next</div>
-<h2 class="section-title">Handing it off</h2>
+
+<section class="section"><div class="wrap">
+<div class="section-num">What Comes Next</div>
+<h2 class="section-title">The first thing to pick up</h2>
 <div class="body">
-<p>The most actionable single piece of work for the team to pick up immediately is the Atlanta warehouse evaluation. Cost to serve modeling, customer concentration analysis, and a recommended timing window. That memo, sized to the proposed warehouse's actual lane economics, is the highest leverage deliverable left on the table.</p>
-<p>After that, in order: the Texas root cause sprint (Phase 1, owner Gus Patrick and Melissa Magsalin), the GFS Shepherdsville deepening proposal (Phase 2, owner Dean Psyhogios), the Houston opportunity sizing memo (Phase 3, owner Gus Patrick), and the West Zone Playbook v1 (Phase 4, owner Shotsie Wilson).</p>
-<p>All four are built to run inside the current network. None of them require new capital. All of them have an owner.</p>
+<p>Start with a real cost-to-serve case for the Atlanta warehouse. It is the move with the widest reach and the one the field keeps returning to. From there: rebuild Texas around the market, a Houston growth plan with Gus Patrick, and a West Coast playbook built on the relationship-led approach Yoel and Nancy described.</p>
+<p><p>One follow-up worth separating from the market work is product fit. Several AE conversations pointed to cases where the issue is not only freight or price, but whether the flour or bakery formula matches the application well enough to win. That came up in Hispanic bread applications, Southeast soft wheat applications, and retail bakery shelf-life needs. That question is especially important in the West, where cleaner-label, untreated, unmalted, and enzyme-based flours are in, yet they do not always fit the current portfolio. Some of the next opportunity may require product adjustment, not just better coverage.</p></p>
 </div>
 </div></section>
-<footer class="footer">
-<div class="footer-grid">
-<div class="footer-brand">
-<div class="footer-brand-title"><span class="dot"></span>FLOUR FRONTIER</div>
-A 10 week internship study analyzing where General Mills NAF FSI should allocate flour milling and warehouse capacity over the next 10 years.
-</div>
-<div class="footer-col"><h4>The Work</h4>
-<a href="portfolio.html">Portfolio</a>
-<a href="case-study.html">Case Study</a>
-<a href="deck.html">Deck</a></div>
-<div class="footer-col"><h4>Maps</h4>
-<a href="national.html">National Map</a>
-</div>
-<div class="footer-col"><h4>About</h4>
-<a href="about.html">About Jake</a>
-<a href="https://www.linkedin.com/in/jakegilstein/" target="_blank">LinkedIn</a>
-<a href="mailto:jmgilstein@gmail.com">Email</a>
-</div>
-</div>
-<div class="footer-bottom">
-<div>© 2026 Jake Gilstein · Built during NAF FSI Sales Internship at General Mills</div>
-<div>St. Augustine, FL · Tampa, FL · Minneapolis WHQ</div>
-</div>
-</footer>
-</body></html>
+<footer class="footer"><div class="row"><div>&copy; 2026 Jake Gilstein &middot; Built during NAF FSI Sales Internship at General Mills</div><div>St. Augustine, FL &middot; Tampa, FL &middot; Minneapolis WHQ</div></div></footer>
+</body>
+</html>
