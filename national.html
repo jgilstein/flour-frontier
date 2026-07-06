@@ -71,7 +71,7 @@ html,body{background:#0a0e13;color:#e8eaed;font-family:'Inter',-apple-system,san
       <a href="portfolio.html">Portfolio</a>
       <a href="case-study.html">Case Study</a>
       <a href="field-insights.html">Field Insights</a>
-      <a href="deck.html">Deck</a>
+      <a href="deck.html">Deck &amp; Deliverables</a>
       <a href="national.html" class="active">National Map</a>
       <a href="about.html">About</a>
     </div>
@@ -136,19 +136,19 @@ const metros=[
   ,{name:"Birmingham",lat:33.52,lng:-86.81,score:3,rank:null,tagline:"",pop:"",cagr:"",censusRegion:"South",zone:"EAST (Tiemeyer)",ae:"Josh Cohen",distributor:"US Foods-Birmingham, Sysco-Alabama",hqInflow:"Healthcare (UAB), Regions Financial Corporation",industries:"Healthcare, finance, manufacturing, logistics",fy26eqc:"1.73M lb GMI · Index 93 · 27.6% share",plYoY:"-0.9% GMI",growth10yr:"+2-4%",mill:"Kansas City (660 mi)",warehouse:"Orlando WH (470 mi)",transport:"Truck / intermodal",insight:"Near parity and roughly flat. Hold and develop. Josh covers AL, GA, SC, Western NC, TN."}
 ];
 const mills=[
-  {name:"Vernon Mill (CA)",lat:34.00,lng:-118.21,code:"VN"},
-  {name:"Great Falls Mill (MT)",lat:47.50,lng:-111.30,code:"GF"},
-  {name:"Kansas City Mill (MO)",lat:39.10,lng:-94.58,code:"KC"},
-  {name:"Avon Mill (IA)",lat:41.55,lng:-93.49,code:"AV"},
-  {name:"Buffalo Mill (NY)",lat:43.05,lng:-78.88,code:"BF",note:"Offset 11mi north so Buffalo metro stays clickable"}
+  {name:"Vernon, CA Mill (Mill)",lat:34.00,lng:-118.21,code:"VN"},
+  {name:"Great Falls, MT (Mill)",lat:47.50,lng:-111.30,code:"GF"},
+  {name:"Kansas City, MO (Mill)",lat:39.10,lng:-94.58,code:"KC"},
+  {name:"Avon, IA (Mill)",lat:41.55,lng:-93.49,code:"AV"},
+  {name:"Buffalo, NY (Mill)",lat:43.05,lng:-78.88,code:"BF",note:"Offset 11mi north so Buffalo metro stays clickable"}
 ];
 const warehouses=[
-  {name:"Stockton WH (CA)",lat:37.96,lng:-121.27,code:"UQ"},
-  {name:"Arlington WH (TX)",lat:32.70,lng:-97.10,code:"V4"},
-  {name:"Independence WH (MO)",lat:39.09,lng:-94.41,code:"AT"},
-  {name:"Orlando WH (FL)",lat:28.54,lng:-81.38,code:"OO"},
-  {name:"Mechanicsburg WH (PA)",lat:40.21,lng:-77.00,code:"A6"},
-  {name:"Buffalo WH (NY)",lat:42.89,lng:-78.65,code:"S3",note:"Offset 12mi east of Buffalo metro"}
+  {name:"Stockton Dist - Stockton, CA (WH)",lat:37.96,lng:-121.27,code:"UQ"},
+  {name:"Sonwil - Arlington, TX (WH)",lat:32.70,lng:-97.10,code:"V4"},
+  {name:"Allen - Independence, MO (WH)",lat:39.09,lng:-94.41,code:"AT"},
+  {name:"Orlando United Facilities - ORlando, FL (WH)",lat:28.54,lng:-81.38,code:"OO"},
+  {name:"Allen - Mechanicsburg, PA (WH)",lat:40.21,lng:-77.00,code:"A6"},
+  {name:"Sonwil - Buffalo, NY (WH)",lat:42.89,lng:-78.65,code:"S3",note:"Offset 12mi east of Buffalo metro"}
 ];
 const scoreColors={5:"#c8102e",4:"#16a34a",3:"#fbbf24",2:"#a855f7",1:"#3b82f6"};
 const rankColors={1:"#c8102e",2:"#fb923c",3:"#fbbf24",4:"#16a34a",5:"#3b82f6"};
@@ -222,7 +222,7 @@ mills.forEach(mill=>{
   });
   L.marker([mill.lat,mill.lng],{icon,zIndexOffset:500}).addTo(map)
     .bindTooltip(`◆ ${mill.name}`,{direction:'top'})
-    .bindPopup(`<div class="popup-title">${mill.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GM Mill</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${mill.code}</span></div>`, popupOptions);
+    .bindPopup(`<div class="popup-title">${mill.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GMI Mill</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${mill.code}</span></div>`, popupOptions);
 });
 warehouses.forEach(wh=>{
   const icon=L.divIcon({
@@ -232,7 +232,7 @@ warehouses.forEach(wh=>{
   });
   L.marker([wh.lat,wh.lng],{icon,zIndexOffset:400}).addTo(map)
     .bindTooltip(`■ ${wh.name}`,{direction:'top'})
-    .bindPopup(`<div class="popup-title">${wh.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GM Warehouse</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${wh.code}</span></div>`, popupOptions);
+    .bindPopup(`<div class="popup-title">${wh.name}</div><div class="popup-row"><span class="popup-label">Type</span><span class="popup-value">GMI Warehouse</span></div><div class="popup-row"><span class="popup-label">Code</span><span class="popup-value">${wh.code}</span></div>`, popupOptions);
 });
 const legend=L.control({position:'bottomright'});
 legend.onAdd=function(){
