@@ -238,7 +238,7 @@ const legend=L.control({position:'bottomright'});
 legend.onAdd=function(){
   const div=L.DomUtil.create('div','legend');
   div.innerHTML=`
-    <strong>Top 5</strong>
+    <strong>True 5</strong>
     <div><span class="rank-badge" style="background:${rankColors[1]};">#1</span> Houston</div>
     <div><span class="rank-badge" style="background:${rankColors[2]};">#2</span> DFW</div>
     <div><span class="rank-badge" style="background:${rankColors[3]};">#3</span> Atlanta</div>
@@ -254,7 +254,7 @@ legend.onAdd=function(){
     <div><span class="diamond"></span> Mill</div>
     <div><span class="square"></span> Warehouse</div>
     <strong>Coverage</strong>
-    <div style="color:#9ca3af;">Top 5 priority + Top 50 metro coverage</div>
+    <div style="color:#9ca3af;">True 5 priority + Top 50 metro coverage</div>
   `;
   return div;
 };
